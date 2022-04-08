@@ -107,23 +107,22 @@ igralci na teh trgih pa se vedno večji delež odločitev prepuščajo umetni in
 
 \section{Naloga}
 
-Pri nalogi bova tudi s pomočjo metod strojnega učenja napovedala gibanje cen posameznih urnih
+Pri nalogi bova s pomočjo metod strojnega učenja napovedala gibanje cen posameznih urnih
  blokov. Pri tem bova uporabila pretekle podatke o gibanju cen elektrike kot tudi ostalih energentov, 
  vremenske napovedi različnih ponudnikov, podatke o proizvodnji različnih elektrarn itd. 
 
-Najina glavna naloga je torej ustvariti program, ki bo sprejel zgodovinske podatke o vremenu, cene posameznih
- blokov, cene drugih energentov in bo s pomočjo teh poskušal čimbolje uganiti ceno tisti dan na Intra-Dayu in 
- čimboljši približek za uravnoteženo ceno naslednji dan. 
+Najina glavna naloga je ustvariti program, ki bo sprejel zgodovinske podatke o vremenu, cene posameznih
+ blokov ``day-ahead`` trga ter cene drugih energentov in bo s pomočjo teh poskušal čim bolje napovedati ceno na pripadajočem ``intra-day`` trgu.  
 
 
 
 \section*{Električni trg}
 
 V ekonomskem smislu je elektrika surovina, s katero je mogoče trgovati na trgu električne energije \textbf{PX} (angl. \textit{Power Exchange}). Kot je že bilo rečeno je električno energijo zelo težko shranjevati in hkrati morata biti proizvodnja in poraba neprestano v ravnovesju.
- Na trgu dobimo pošteno ceno z načelom pondube in povpreševanja, kar pomeni, da proizvajalci podajo ponudbo (koliko električne energije lahko proizvedejo in za kakšno ceno), nasportno porabniki električne energije podajo povpraševanje (koliko električne energije bodo porabili in koliko so zanj pripravljeni plačati). 
-Tako dobimo dve krivulji in stičišče teh predstavlja ceno elektirke, kar prikazuje slika \ref{fig:postena_cena}. V praksi se tako določi tako imenovani DAY-AHEAD in INTRA-DAY ceni. Zavedati se moramo, da so na trgu mogoče tudi negativne cene.
+ Na trgu dobimo pošteno ceno z načelom ponudbe in povpraševanja, kar pomeni, da proizvajalci podajo ponudbo (koliko električne energije lahko proizvedejo in za kakšno ceno), nasprotno porabniki električne energije podajo povpraševanje (koliko električne energije bodo porabili in koliko so zanj pripravljeni plačati). 
+Tako dobimo dve krivulji in stičišče teh predstavlja ceno elektrike, kar prikazuje slika \ref{fig:postena_cena}. V praksi se tako določi tako imenovani ``day-ahead`` in ``intra-day`` ceni. Zavedati se moramo, da so na trgu mogoče tudi negativne cene.
  Negativne cene so cenovni signal na veleprodajnem trgu električne energije, ki se pojavi, ko visoka nefleksibilna proizvodnja električne energije zadovolji nizko povpraševanje. Neprilagodljivih virov energije ni mogoče hitro in stroškovno učinkovito izklopiti in znova zagnati. Prav tako je cenovno zahtevno zaustaviti obnovljive vire energije.  
- Cene padajo z nizkim povpraševanjem in signalizirajo generatorjem na zmanjšanje proizvodnje, da se izognejo preobremenitvi omrežja. Na trgih za dan vnaprej (DAY-AHED) in znotraj dneva (INTRA-DAY) lahko tako cene padejo pod ničlo.
+ Cene padajo z nizkim povpraševanjem in signalizirajo generatorjem na zmanjšanje proizvodnje, da se izognejo preobremenitvi omrežja. Na trgih za dan vnaprej (``day-ahead``) in znotraj dneva (``intra-day``) lahko tako cene padejo pod ničlo.
 
 \begin{figure}[h]
     \centering
@@ -145,13 +144,13 @@ Evropska Unija se zavzema, da se bo delež obnovljivih virov do leta 2030 dvigni
 Eden izmed načinov je shranjevanje električne energije, ko veterne in sončne elektrarne pridelajo presežek. 
 
 
-\subsection*{Podrobnejši opis DAY-AHEAD in INTRA-DAY cene}
+\section*{Podrobnejši opis ``day-ahead`` in ``intra-day`` trga}
 
-DAY-AHED se upravlja prek dražbe, ki poteka enkrat na dan, vso leto. Na tej dražbi se trguje za vse ure naslednjega dne. Naročila so prijavljena s strani udeležencev na trgu, 
-in sicer imajo udeleženci čas do 12:00 UTC, da oddajo vsa pondbe in povpraševanja za naslednji dan. Nato se zažene algoritem. Na podlagi nakupnih naročil se vzpostavi krivulja povpraševanja, na podlagi prodajnih naročil pa krivulja ponudbe za vsako uro naslednjega dne. Tržna klirinška cena (MCP), ki odraža ponudbo in povpraševanje, leži na presečišču obeh krivulj.
+``Day-ahead`` trg se upravlja prek dražbe, ki poteka enkrat na dan, skozi celotno leto. Na tej dražbi se trguje za vse ure naslednjega dne. Naročila so prijavljena s strani udeležencev na trgu, 
+in sicer imajo udeleženci čas do 12:00 UTC, da oddajo vsa ponudbe in povpraševanja za naslednji dan. Na podlagi nakupnih naročil se vzpostavi krivulja povpraševanja, na podlagi prodajnih naročil pa krivulja ponudbe za vsako uro naslednjega dne. Tržna klirinška cena (MCP), ki odraža ponudbo in povpraševanje, leži na presečišču obeh krivulj.
 
 
-Na INTRA-DAYu udeleženci trga trgujejo neprekinjeno, 24 ur na dan, z dostavo še isti dan. Takoj, ko se ujemata naročilo za nakup in prodajo, se posel izvede. Z električno energijo je mogoče trgovati do 5 minut pred dostavo in prek urnih, polurnih ali četrturnih pogodb. Ker to omogoča visoko stopnjo prilagodljivosti, člani uporabljajo INTRA-DAY za prilagoditve v zadnjem trenutku in za uravnoteženje svojih pozicij bližje realnemu času. Čezmejno trgovanje je bistveno pri trgovanju znotraj dneva. 
+Na ``intra-day`` trgu udeleženci trga trgujejo neprekinjeno, 24 ur na dan, z dostavo še isti dan. Takoj, ko se ujemata naročilo za nakup in prodajo, se posel izvede. Z električno energijo je mogoče trgovati do 5 minut pred dostavo in prek urnih, polurnih ali četrturnih pogodb. Ker to omogoča visoko stopnjo prilagodljivosti, člani uporabljajo ``intra-day`` za prilagoditve v zadnjem trenutku in za uravnoteženje svojih pozicij bližje realnemu času. Čezmejno trgovanje je bistveno pri trgovanju znotraj dneva. 
 
 
 
@@ -220,7 +219,7 @@ Sončne elektrarne so porazdeljene bolj enakomerno (slika \ref{fig:sonce}).
 
 \section*{Projekt}
 
-V nadaljevanju bova s pomočjo LSTM (ali mogoče katerega drugega) modela poskušala napovedati ceno na DAY-AHEADu za naslednji dan in tudi kakšnemu trendu bo sledila INTRA-DAY cena. Kot na vseh drugih trgih je tudi tukaj možen zaslužek s pravo strategijo. Najin cilj je s pomočjo vremenskih podatkov čimbolje napovedati gibanje cene elektrike. 
+V nadaljevanju bova s pomočjo LSTM (ali mogoče katerega drugega) modela poskušala napovedati ceno na ``day-ahead`` trgu za naslednji dan in tudi kakšnemu trendu bo sledila ``intra-day`` cena. Kot na vseh drugih trgih je tudi tukaj možen zaslužek s pravo strategijo. Najin cilj je s pomočjo vremenskih podatkov čimbolje napovedati gibanje cene elektrike. 
 
 
 
