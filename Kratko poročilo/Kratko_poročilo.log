@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.10.19)  8 APR 2022 11:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.10.19)  8 APR 2022 15:09
 entering extended mode
 **./Kratko_poročilo.tex
 (Kratko_poročilo.tex
@@ -154,13 +154,18 @@ Package color Info: Driver file: pdftex.def on input line 149.
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ) (C:\Users\maipr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\dvipsnam.def
 File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
-))
+)) (C:\Users\maipr\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks29
+\verbatim@line=\toks30
+\verbatim@in@stream=\read3
+)
 (C:\Users\maipr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
 
 (C:\Users\maipr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks29
+\KV@toks@=\toks31
 )
 (C:\Users\maipr\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
@@ -188,27 +193,27 @@ File: l3backend-pdftex.def 2021-08-04 L3 backend support: PDF output (pdfTeX)
 ) (Kratko_poročilo.aux)
 \openout1 = `Kratko_poročilo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 70.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
+LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 71.
 
 
 (C:\Users\maipr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 70.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 71.
 
 
 (C:\Users\maipr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -222,12 +227,12 @@ ii
 \scratchbox=\box54
 \nofMPsegments=\count274
 \nofMParguments=\count275
-\everyMPshowfont=\toks30
+\everyMPshowfont=\toks32
 \MPscratchCnt=\count276
 \MPscratchDim=\dimen154
 \MPnumerator=\count277
 \makeMPintoPDFobject=\count278
-\everyMPtoPDFconversion=\toks31
+\everyMPtoPDFconversion=\toks33
 )
 (C:\Users\maipr\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -239,66 +244,42 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Underfull \hbox (badness 10000) in paragraph at lines 74--80
+Underfull \hbox (badness 10000) in paragraph at lines 75--81
 
  []
 
-[1{C:/Users/maipr/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]
+[1{C:/Users/maipr/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+
+LaTeX Warning: Characters dropped after `\end{comment}' on input line 125.
+
+[2]
 <curve.png, id=13, 304.88907pt x 236.38312pt>
 File: curve.png Graphic file (type png)
 <use curve.png>
-Package pdftex.def Info: curve.png  used on input line 129.
+Package pdftex.def Info: curve.png  used on input line 131.
 (pdftex.def)             Requested size: 228.66623pt x 177.2869pt.
- [3 <./curve.png>]
-<porazdelitev_germany_2021.png, id=17, 709.65125pt x 424.58624pt>
-File: porazdelitev_germany_2021.png Graphic file (type png)
-<use porazdelitev_germany_2021.png>
-Package pdftex.def Info: porazdelitev_germany_2021.png  used on input line 165.
-
-(pdftex.def)             Requested size: 354.82475pt x 212.2926pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<wind_2016.png, id=19, 1132.23pt x 689.57625pt>
-File: wind_2016.png Graphic file (type png)
-<use wind_2016.png>
-Package pdftex.def Info: wind_2016.png  used on input line 180.
-(pdftex.def)             Requested size: 283.05681pt x 172.39363pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<solar_2016.png, id=20, 1063.975pt x 703.62875pt>
-File: solar_2016.png Graphic file (type png)
-<use solar_2016.png>
-Package pdftex.def Info: solar_2016.png  used on input line 187.
-(pdftex.def)             Requested size: 265.9931pt x 175.90675pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4] [5 <./porazdelitev_germany_2021.png> <./wind_2016.png>] [6 <./solar_2016.pn
-g>] (Kratko_poročilo.aux) )
+ [3 <./curve.png>] [4] (Kratko_poročilo.aux) )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 74 ({)
+### simple group (level 1) entered at line 75 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 4126 strings out of 478927
- 59447 string characters out of 2852534
- 374659 words of memory out of 3000000
- 21791 multiletter control sequences out of 15000+600000
+ 4135 strings out of 478927
+ 59593 string characters out of 2852534
+ 375289 words of memory out of 3000000
+ 21800 multiletter control sequences out of 15000+600000
  407280 words of font info for 42 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 71i,7n,80p,896b,295s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,7n,80p,878b,295s stack positions out of 5000i,500n,10000p,200000b,80000s
 <C:/Users/maipr/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmbx12.pfb><C:/Users/maipr/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/maipr/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/maipr/AppData/Local/Progra
 ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/maipr/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Kratko_poročilo.pdf (6 pages, 3583747 bytes).
+Output written on Kratko_poročilo.pdf (4 pages, 88300 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
+ 41 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
