@@ -1,12 +1,12 @@
 import pandas as pd
 
 # Global intra day and day ahead dataframes for functions to use
-df_intra_day = pd.read_parquet('data/trds.parquet', engine='pyarrow')
+df_intra_day = pd.read_parquet('../data/trds.parquet', engine='pyarrow')
 
 type_dict = {
     0: 'datetime'
 }
-df_day_ahead = pd.read_csv('data/DE_DA_prices.csv',
+df_day_ahead = pd.read_csv('../data/DE_DA_prices.csv',
                            converters={'timestamp': lambda t: pd.Timestamp(t).timestamp()})
 
 # Drop useless attributes
@@ -32,16 +32,16 @@ def get_day_ahead_data():
 
 
 def get_wind_data():
-    df_wind_historic = pd.read_csv('data/wind_data_2022.csv')
+    df_wind_historic = pd.read_csv('../data/wind_data_2022.csv')
     return df_wind_historic
 
 def get_wind_forecast():
-    df_wind_forecast = pd.read_csv('data/forecast_wind_data_average.csv')
+    df_wind_forecast = pd.read_csv('../data/forecast_wind_data_average.csv')
     return df_wind_forecast
 
 
 def get_sun_data():
-    df_sun_historic = pd.read_csv('data/data_sun_2022.csv')
+    df_sun_historic = pd.read_csv('../data/data_sun_2022.csv')
     return df_sun_historic
 
 
