@@ -10,8 +10,8 @@ from statsmodels.tsa.stattools import grangercausalitytests
 from data_retrieval import get_wind_forecast, \
     get_transformed_day_ahead, get_intra_day_min_max_mean, get_diff, get_pct_change_dataframe, get_intra_day_by_hours
 
-
-path = "../data_analysis/plots"
+plot_path = "../data_analysis/plots"
+csv_path = "../data_analysis/csv"
 
 
 def plot_price_at_given_time(start_date='2021-11-09',
@@ -38,7 +38,7 @@ def plot_price_at_given_time(start_date='2021-11-09',
     ax.set_ylabel("Price")
     plt.tight_layout()
     plt.figure(figsize=(200, 150))
-    plt.savefig(f'{path}/price_at_given_time_{start_date}-{end_date}.png')
+    plt.savefig(f'{plot_path}/price_at_given_time_{start_date}-{end_date}.png')
 
 
 def plot_average_price_of_product(max_time_before_closing=None,
@@ -90,62 +90,96 @@ def plot_average_price_of_product(max_time_before_closing=None,
     ax.set_ylabel("Price")
     plt.tight_layout()
     plt.figure(figsize=(200, 150))
-    plt.savefig(f'{path}/average_price_{start_date}-{end_date}'
+    plt.savefig(f'{plot_path}/average_price_{start_date}-{end_date}'
                 f'-m{min_time_before_closing}-M{min_time_before_closing}-{unit}.png')
 
 
 def get_day_ahead_as_intra_day_prediction_accuracy(box_plot=False,
+                                                   percentage=False,
+                                                   remove_outliers=False,
+                                                   interval='H',
+                                                   max_time_before_closing=None,
+                                                   min_time_before_closing=None,
+                                                   unit=None,
                                                    start_date='2021-11-09',
                                                    end_date='2022-03-23'):
     """
     Calculates standard deviation for intra-day prices by day
     TODO: add option to input max/min time before closing to get_pct_change, maybe even add param to this function to group by something other than hour / not group
-    TODO: add option to not remove outliers
-    TODO: maybe change to actual price diff?
     :param box_plot: to plot the box plot or not
+    :param percentage: to use percentage or price difference
+    :param remove_outliers: if outliers should be removed before calculating accuracy (according to interquartile range)
+    :param interval: time interval on which to group intra-day prices
+    :param max_time_before_closing: only trades after maximum till product closes
+    :param min_time_before_closing: only trades before minimum time till product closes
+    :param unit: pandas unit for time before closing
+        Possible values:
+        ‘W’, ‘D’, ‘T’, ‘S’, ‘L’, ‘U’, or ‘N’
+        ‘days’ or ‘day’
+        ‘hours’, ‘hour’, ‘hr’, or ‘h’
+        ‘minutes’, ‘minute’, ‘min’, or ‘m’
+        ‘seconds’, ‘second’, or ‘sec’
+        ‘milliseconds’, ‘millisecond’, ‘millis’, or ‘milli’
+        ‘microseconds’, ‘microsecond’, ‘micros’, or ‘micro’
+        ‘nanoseconds’, ‘nanosecond’, ‘nanos’, ‘nano’, or ‘ns’.
     :param start_date: filter trades to those that happened on or after start_date
     :param end_date: filter trades to those that happened on or before end_date
     :return:
     """
-    df = get_pct_change_dataframe(start_date, end_date)
+    if percentage:
+        name = 'percentage'
+        column = 'percentage_change'
+        df = get_pct_change_dataframe(start_date, end_date)
+    else:
+        name = 'difference'
+        column = 'price_diff'
+        df = get_diff(absolute=False,
+                      interval=interval,
+                      max_time_before_closing=max_time_before_closing,
+                      min_time_before_closing=min_time_before_closing,
+                      unit=unit,
+                      start_date=start_date,
+                      end_date=end_date)
 
-    if box_plot:
-        # Quantile box plot
-        plt.boxplot(df['percentage_change'])
-        plt.title("Before removing outliers")
-        plt.savefig(f'{path}/box_plot_before-{start_date}-{end_date}.png')
+    if remove_outliers:
+        if box_plot:
+            # Quantile box plot
+            plt.boxplot(df['percentage_change'])
+            plt.title("Before removing outliers")
+            plt.savefig(f'{plot_path}/{name}-box_plot_before-{start_date}-{end_date}.png')
 
-    # Calculate limits for  outliers with interquartile range
-    # Will be more accurate when we get more data
-    q1 = df['percentage_change'].quantile(0.25)
-    q3 = df['percentage_change'].quantile(0.75)
-    iqr = q3 - q1
-    lower_limit = q1 - 1.5 * iqr
-    upper_limit = q3 + 1.5 * iqr
+        # Calculate limits for  outliers with interquartile range
+        # Will be more accurate when we get more data
+        q1 = df[column].quantile(0.25)
+        q3 = df[column].quantile(0.75)
+        iqr = q3 - q1
+        lower_limit = q1 - 1.5 * iqr
+        upper_limit = q3 + 1.5 * iqr
 
-    # Remove extreme outliers
-    df = df[(df['percentage_change'] >= lower_limit)
-            & (df['percentage_change'] <= upper_limit)]
+        # Remove extreme outliers
+        df = df[(df[column] >= lower_limit)
+                & (df[column] <= upper_limit)]
 
-    if box_plot:
-        # Quantile box plot
-        plt.boxplot(df['percentage_change'])
-        plt.title("After removing outliers")
-        plt.savefig(f'{path}/box_plot_after-{start_date}-{end_date}.png')
+        if box_plot:
+            # Quantile box plot
+            plt.boxplot(df[column])
+            plt.title("After removing outliers")
+            plt.savefig(f'{plot_path}/{name}-box_plot_after-{start_date}-{end_date}.png')
 
     df.plot(kind='hist', bins=100, color='blue', edgecolor='black')
-    plt.savefig(f'{path}/percentage_change_hist.png')
+    plt.savefig(f'{plot_path}/{name}-_change_hist.png')
 
-    sns.distplot(df['percentage_change'], hist=True, kde=True,
+    sns.distplot(df[column], hist=True, kde=True,
                  bins=100, color='darkblue',
                  hist_kws={'edgecolor': 'black'},
                  kde_kws={'linewidth': 2})
-    plt.savefig(f'{path}/percentage_change_dist.png')
+    plt.savefig(f'{plot_path}/{name}_dist.png')
 
     # var and std by hour of day
-    times = pd.to_datetime(df['trd_delivery_time_start'])
-    # TODO: make this return instead
-    print(df.groupby(times.dt.hour)['percentage_change'].agg(['var', 'std']))
+    if percentage:
+        times = pd.to_datetime(df['trd_delivery_time_start'])
+        return df.groupby(times.dt.hour)[column].agg(['var', 'std']).rename(index={'trd_delivery_time_start': 'hour'})
+    return df.groupby(df.index.hour)[column].agg(['var', 'std']).rename(index={'trd_delivery_time_start': 'hour'})
 
 
 def get_increase_decrease(start_date='2021-11-09',
@@ -174,8 +208,7 @@ def get_increase_decrease(start_date='2021-11-09',
         'Negative'
     ]
     df['label'] = np.select(conditions, values, default='Undefined')
-    # TODO: make this return instead
-    print(df['label'].value_counts())
+    return df['label'].value_counts()
 
 
 def get_wind_correlation(time,
@@ -220,9 +253,8 @@ def get_wind_correlation(time,
     df.dropna(inplace=True)
     pd.set_option('display.expand_frame_repr', False)
 
-    # TODO: make this return instead
-    print(f"Correlation between forecast wind data at hour {time} for 12 hours ahead and price change:")
-    print(df[df.columns[1:14]].apply(lambda x: x.corr(df['price_diff'], method='pearson')), end=3 * '\n')
+    # print(f"Correlation between forecast wind data at hour {time} for 12 hours ahead and price change:")
+    return df[df.columns[1:14]].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
 
 
 def plot_seasonality():
@@ -240,7 +272,7 @@ def plot_seasonality():
         fig.autofmt_xdate()
         plt.title(title)
         plt.tight_layout()
-        plt.savefig(f'{path}/seasonality-{(title.lower())}.png')
+        plt.savefig(f'{plot_path}/seasonality-{(title.lower())}.png')
 
     plot(seasonal_decompose(df_intra_day['trd_price_mean'], period=1), 'Hourly')
     plot(seasonal_decompose(df_intra_day['trd_price_mean'], period=24), 'Daily')
@@ -257,11 +289,11 @@ def plot_auto_correlation():
     df_intra_day['trd_delivery_time_start'] = pd.to_datetime(df_intra_day['trd_delivery_time_start'])
     df_intra_day = df_intra_day.set_index('trd_delivery_time_start')
     plot_acf(df_intra_day['trd_price_mean'])
-    plt.savefig(f'{path}/auto_correlation.png')
+    plt.savefig(f'{plot_path}/auto_correlation.png')
 
     # Partial auto-correlation plot
     plot_pacf(df_intra_day['trd_price_mean'], method='ywm')
-    plt.savefig(f'{path}/partial_auto_correlation.png')
+    plt.savefig(f'{plot_path}/partial_auto_correlation.png')
 
 
 def plot_diff(start_date='2021-11-09',
@@ -271,6 +303,7 @@ def plot_diff(start_date='2021-11-09',
     :param start_date: filter trades to those that happened on or after start_date
     :param end_date: filter trades to those that happened on or before end_date
     """
+
     def plot_df(df):
         df.plot(kind='hist', bins=100, color='blue', edgecolor='black')
         plt.show()
@@ -282,7 +315,7 @@ def plot_diff(start_date='2021-11-09',
                      kde_kws={'linewidth': 2})
         plt.show()
 
-    #plot_df(get_diff(absolute=False, start_date=start_date, end_date=end_date, time_before_closing=30, unit='minutes'))
+    # plot_df(get_diff(absolute=False, start_date=start_date, end_date=end_date, time_before_closing=30, unit='minutes'))
     plot_df(get_diff(absolute=False, start_date=start_date, end_date=end_date, interval='H'))
 
 
@@ -291,6 +324,7 @@ def plot_std_of_diff_by_day():
     Plots standard deviation between intra-day and day-ahead prices
     TODO: currently it's for all products in a day, add option to pass max/min time before closing
     """
+
     def plot_df(df):
         df = df.groupby(df.index.day_name())['price_diff'].agg(['var', 'std'])
         df.rename(index={'trd_delivery_time_start': 'hour'})
@@ -300,7 +334,7 @@ def plot_std_of_diff_by_day():
         df = df.set_index('Day').reindex(cats)
         df['std'].plot(kind="bar")
         plt.tight_layout()
-        plt.savefig(f'{path}/std_of_diff_by_day.png')
+        plt.savefig(f'{plot_path}/std_of_diff_by_day.png')
 
     plot_df(get_diff())
 
@@ -362,13 +396,16 @@ if __name__ == "__main__":
     plot_average_price_of_product()
     plot_average_price_of_product(max_time_before_closing=30, unit='minutes')
     plot_average_price_of_product(max_time_before_closing=1, unit='hours')
-    get_day_ahead_as_intra_day_prediction_accuracy()
-    get_increase_decrease()
-    get_wind_correlation(time=0)
-    get_wind_correlation(time=12)
+    df_acc = get_day_ahead_as_intra_day_prediction_accuracy()
+    df_acc.to_csv(f'{csv_path}/accuracy.csv')
+    df_inc_dec = get_increase_decrease()
+    df_inc_dec.to_csv(f'{csv_path}/increase_decrease.csv')
+    df_wind_corr_0 = get_wind_correlation(time=0)
+    df_wind_corr_0.to_csv(f'{csv_path}/wind_correlation_0.csv')
+    df_wind_corr_12 = get_wind_correlation(time=12)
+    df_wind_corr_12.to_csv(f'{csv_path}/wind_correlation_12.csv')
     plot_seasonality()
     plot_diff()
     plot_std_of_diff_by_day()
-    granger_causation_matrix = granger_causality()
-    print(granger_causation_matrix)
-
+    df_granger_causation_matrix = granger_causality()
+    df_granger_causation_matrix.to_csv(f'{csv_path}/granger_causality.csv')
