@@ -105,7 +105,6 @@ def get_day_ahead_as_intra_day_prediction_accuracy(box_plot=False,
                                                    end_date='2022-03-23'):
     """
     Calculates standard deviation for intra-day prices by day
-    TODO: add option to input max/min time before closing to get_pct_change, maybe even add param to this function to group by something other than hour / not group
     :param box_plot: to plot the box plot or not
     :param percentage: to use percentage or price difference
     :param remove_outliers: if outliers should be removed before calculating accuracy (according to interquartile range)
@@ -129,7 +128,12 @@ def get_day_ahead_as_intra_day_prediction_accuracy(box_plot=False,
     if percentage:
         name = 'percentage'
         column = 'percentage_change'
-        df = get_pct_change_dataframe(start_date, end_date)
+        df = get_pct_change_dataframe(interval=interval,
+                                      max_time_before_closing=max_time_before_closing,
+                                      min_time_before_closing=min_time_before_closing,
+                                      unit=unit,
+                                      start_date=start_date,
+                                      end_date=end_date)
     else:
         name = 'difference'
         column = 'price_diff'
@@ -186,10 +190,9 @@ def get_increase_decrease(start_date='2021-11-09',
                           end_date='2022-03-23'):
     """
     Calculates times when price decreased, increased or remained the same
-    TODO: create a separate function for value counts, this one should just return labeled data
     :param start_date: filter trades to those that happened on or after start_date
     :param end_date: filter trades to those that happened on or before end_date
-    :return: pandas dataframe with value counts for positive, negative and neutral changes
+    :return: pandas dataframe with labels for positive, negative and neutral changes
     """
     df_intra_day = get_intra_day_min_max_mean(interval='H', on='trd_delivery_time_start', start_date=start_date,
                                               end_date=end_date, max_time_before_closing=1, unit='H')
@@ -208,7 +211,7 @@ def get_increase_decrease(start_date='2021-11-09',
         'Negative'
     ]
     df['label'] = np.select(conditions, values, default='Undefined')
-    return df['label'].value_counts()
+    return df
 
 
 def get_wind_correlation(time,
@@ -315,14 +318,14 @@ def plot_diff(start_date='2021-11-09',
                      kde_kws={'linewidth': 2})
         plt.show()
 
-    # plot_df(get_diff(absolute=False, start_date=start_date, end_date=end_date, time_before_closing=30, unit='minutes'))
     plot_df(get_diff(absolute=False, start_date=start_date, end_date=end_date, interval='H'))
 
 
-def plot_std_of_diff_by_day():
+def plot_std_of_diff_by_day(max_time_before_closing=None,
+                            min_time_before_closing=None,
+                            unit=None):
     """
     Plots standard deviation between intra-day and day-ahead prices
-    TODO: currently it's for all products in a day, add option to pass max/min time before closing
     """
 
     def plot_df(df):
@@ -336,13 +339,15 @@ def plot_std_of_diff_by_day():
         plt.tight_layout()
         plt.savefig(f'{plot_path}/std_of_diff_by_day.png')
 
-    plot_df(get_diff())
+    plot_df(get_diff(max_time_before_closing=max_time_before_closing,
+                     min_time_before_closing=min_time_before_closing,
+                     unit=unit))
 
 
 def granger_causality(start_date='2021-11-09',
                       end_date='2022-03-23'):
     """
-    Checks if intra-day price the day before gra
+    Checks if a product of an hour granger causes subsequent hours
     :param start_date: filter trades to those that happened on or after start_date
     :param end_date: filter trades to those that happened on or before end_date
     :return: pandas dataframe with p-values for granger causality for all hour combinations
@@ -378,7 +383,6 @@ def granger_causality(start_date='2021-11-09',
 # Max lag is 1 as it was only necessary to difference once
 def get_grangers_causation_matrix(data, variables, test='ssr_chi2test', verbose=False, max_lag=1):
     df = pd.DataFrame(np.zeros((len(variables), len(variables))), columns=variables, index=variables)
-    print(data)
     for c in df.columns:
         for r in df.index:
             test_result = grangercausalitytests(data[[r, c]], maxlag=max_lag, verbose=False)
@@ -397,7 +401,9 @@ if __name__ == "__main__":
     plot_average_price_of_product(max_time_before_closing=30, unit='minutes')
     plot_average_price_of_product(max_time_before_closing=1, unit='hours')
     df_acc = get_day_ahead_as_intra_day_prediction_accuracy()
-    df_acc.to_csv(f'{csv_path}/accuracy.csv')
+    df_acc.to_csv(f'{csv_path}/accuracy_diff.csv')
+    df_acc = get_day_ahead_as_intra_day_prediction_accuracy(percentage=True)
+    df_acc.to_csv(f'{csv_path}/accuracy_percentage.csv')
     df_inc_dec = get_increase_decrease()
     df_inc_dec.to_csv(f'{csv_path}/increase_decrease.csv')
     df_wind_corr_0 = get_wind_correlation(time=0)

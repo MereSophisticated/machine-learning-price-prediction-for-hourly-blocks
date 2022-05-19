@@ -213,18 +213,36 @@ def get_diff(absolute=True,
     return df
 
 
-def get_pct_change_dataframe(start_date='2021-11-09',
+def get_pct_change_dataframe(interval='H',
+                             max_time_before_closing=60,
+                             min_time_before_closing=None,
+                             unit='minutes',
+                             start_date='2021-11-09',
                              end_date='2022-03-23'):
     """
+    :param interval: time interval on which to group intra-day prices
+    :param max_time_before_closing: only trades after maximum till product closes
+    :param min_time_before_closing: only trades before minimum time till product closes
+    :param unit: pandas unit for time before closing
+        Possible values:
+        ‘W’, ‘D’, ‘T’, ‘S’, ‘L’, ‘U’, or ‘N’
+        ‘days’ or ‘day’
+        ‘hours’, ‘hour’, ‘hr’, or ‘h’
+        ‘minutes’, ‘minute’, ‘min’, or ‘m’
+        ‘seconds’, ‘second’, or ‘sec’
+        ‘milliseconds’, ‘millisecond’, ‘millis’, or ‘milli’
+        ‘microseconds’, ‘microsecond’, ‘micros’, or ‘micro’
+        ‘nanoseconds’, ‘nanosecond’, ‘nanos’, ‘nano’, or ‘ns’.
     :param start_date: filter trades to those that happened on or after start_date
     :param end_date: filter trades to those that happened on or before end_date
     :return: dataframe with percentage change between day-ahead and intra-day
     """
     df = get_transformed_day_ahead(start_date=start_date, end_date=end_date)
-    df['percentage_change'] = ((get_intra_day_min_max_mean(interval='H',
+    df['percentage_change'] = ((get_intra_day_min_max_mean(interval=interval,
                                                            on='trd_delivery_time_start',
-                                                           max_time_before_closing=60,
-                                                           unit='minutes',
+                                                           max_time_before_closing=max_time_before_closing,
+                                                           min_time_before_closing=min_time_before_closing,
+                                                           unit=unit,
                                                            start_date=start_date,
                                                            end_date=end_date)['trd_price_mean']
                                 - df['trd_price'].values) /
@@ -244,7 +262,7 @@ def get_intra_day_by_hours(start_date='2021-11-09',
     :return: dataframe of intra-day prices split into columns by hours
     """
     df = get_intra_day_min_max_mean(on='trd_delivery_time_start', interval='H',
-                                       start_date=start_date, end_date=end_date)
+                                    start_date=start_date, end_date=end_date)
     by_hours = []
 
     for hour in range(24):
