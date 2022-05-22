@@ -1,0 +1,30 @@
+Prever kakšno je odstopanje za celotn timeline (average price diff between day-ahead & intra-day)
+Might make sense to do an analysis how price variance changes depending on how much time is left till closing time
+
+
+
+
+def compute_slope(y):
+        output = linregress(list(range(len(y))), y)
+        return output.slope
+
+def get_slopes():
+    df = get_intra_day_min_max_mean(interval='H', on='trd_delivery_time_start',
+                                    start_date='2021-11-09', end_date='2022-03-22', max_time_before_closing=30,
+                                    unit='minutes').set_index('trd_delivery_time_start').dropna()
+    df.reset_index(inplace=True)
+
+    for hour in range(24):
+        # Maybe make a dataframe for each hour, merge, then sort?
+        #df.loc[df['trd_delivery_time_start'].dt.hour == hour]['slope'] = df[df['trd_delivery_time_start'].dt.hour == hour]['trd_price_mean'].rolling(window=15, on='trd_delivery_time_start').apply(
+        #    compute_slope)
+        # Calculate slope for each hour with rolling for 6
+        # TODO: THIS IS NOT OKAY, YOU'LL NEED MORE VALUES FOR A SINGLE PRODUCT IN A DAY AND MAKE A SLOPE ON THOSE, DO SIMPLER FEATURES FOR NOW
+        print(df['trd_delivery_time_start'].dt.hour)
+        df.loc[df['trd_delivery_time_start'].dt.hour == hour, 'slope'] = df.loc[df['trd_delivery_time_start'].dt.hour == hour]['trd_price_mean'].rolling(window=6).apply(compute_slope)
+        print(df)
+
+    print(df)
+
+
+get_slopes()
