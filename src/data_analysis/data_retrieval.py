@@ -1,8 +1,12 @@
+import os
+
 import numpy as np
 import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 from pathlib import Path
+
+from utils import PROJECT_ROOT
 
 # Global intra day and day ahead dataframes for functions to use
 files = ['trds_1.parquet',
@@ -14,7 +18,7 @@ files = ['trds_1.parquet',
          ]
 tables = []
 for file in files:
-    tables.append(pq.read_table(Path(__file__).parent / f'../data/{file}',
+    tables.append(pq.read_table(f'{PROJECT_ROOT}\\data\\{file}',
                                 columns=['trd_trade_id', 'trd_execution_time', 'trd_venue',
                                          'trd_buy_delivery_area', 'trd_sell_delivery_area',
                                          'trd_tariff',
@@ -25,12 +29,12 @@ table = pa.concat_tables(tables)
 df_intra_day = table.to_pandas()
 df_intra_day = df_intra_day.sort_values(by=['trd_execution_time', 'trd_buy_delivery_area', 'trd_sell_delivery_area'])
 
-df_day_ahead = pd.read_csv(Path(__file__).parent / '../data/DE_DA_prices.csv',
+df_day_ahead = pd.read_csv(f'{PROJECT_ROOT}\\data\\DE_DA_prices.csv',
                            converters={'timestamp': lambda t: pd.Timestamp(t).timestamp()})
 
 # Global wind dataframes for functions to use
-df_wind_historic = pd.read_csv('../data/wind_data_average.csv')
-df_wind_forecast = pd.read_csv('../data/forecast_wind_data_average.csv')
+df_wind_historic = pd.read_csv(f'{PROJECT_ROOT}\\data\\wind_data_average.csv')
+df_wind_forecast = pd.read_csv(f'{PROJECT_ROOT}\\data\\forecast_wind_data_average.csv')
 
 
 def get_intra_day_data_for_region(region: str):
@@ -210,7 +214,7 @@ def get_diff(absolute=True,
     df.dropna(inplace=True)
     df.rename(columns={"trd_price": "price_diff"}, inplace=True)
 
-    return df
+    return df.copy()
 
 
 def get_pct_change_dataframe(interval='H',
@@ -343,3 +347,10 @@ def get_std_by_day(absolute=False,
                   start_date=start_date, end_date=end_date)
     df['std'] = df.groupby(df.index.day_name())['price_diff'].transform('std')
     return df
+
+if __name__ == "__main__":
+    df = get_intra_day_min_max_mean(interval='H', on='trd_delivery_time_start',
+                                    start_date='2021-11-09', end_date='2022-03-22', max_time_before_closing=30,
+                                    unit='minutes').set_index('trd_delivery_time_start')
+    df.apply(lambda x: np.polyfit(df.index.to_pydatetime(), x, 1)[0])
+    print(df)

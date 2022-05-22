@@ -2,7 +2,10 @@ import numpy as np
 import pandas as pd
 import pmdarima as pmd
 import seaborn as sns
+import datetime as dt
+from scipy import stats
 from matplotlib import pyplot as plt
+from scipy.stats import linregress
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import grangercausalitytests
@@ -10,8 +13,8 @@ from statsmodels.tsa.stattools import grangercausalitytests
 from data_retrieval import get_wind_forecast, \
     get_transformed_day_ahead, get_intra_day_min_max_mean, get_diff, get_pct_change_dataframe, get_intra_day_by_hours
 
-plot_path = "../data_analysis/plots"
-csv_path = "../data_analysis/csv"
+plot_path = "plots"
+csv_path = "csv"
 
 
 def plot_price_at_given_time(start_date='2021-11-09',
@@ -37,7 +40,6 @@ def plot_price_at_given_time(start_date='2021-11-09',
     ax.set_xlabel("Time")
     ax.set_ylabel("Price")
     plt.tight_layout()
-    plt.figure(figsize=(200, 150))
     plt.savefig(f'{plot_path}/price_at_given_time_{start_date}-{end_date}.png')
 
 
@@ -89,7 +91,6 @@ def plot_average_price_of_product(max_time_before_closing=None,
     ax.set_xlabel("Product start time")
     ax.set_ylabel("Price")
     plt.tight_layout()
-    plt.figure(figsize=(200, 150))
     plt.savefig(f'{plot_path}/average_price_{start_date}-{end_date}'
                 f'-m{min_time_before_closing}-M{min_time_before_closing}-{unit}.png')
 
@@ -171,7 +172,7 @@ def get_day_ahead_as_intra_day_prediction_accuracy(box_plot=False,
             plt.savefig(f'{plot_path}/{name}-box_plot_after-{start_date}-{end_date}.png')
 
     df.plot(kind='hist', bins=100, color='blue', edgecolor='black')
-    plt.savefig(f'{plot_path}/{name}-_change_hist.png')
+    plt.savefig(f'{plot_path}/{name}_change_hist.png')
 
     sns.distplot(df[column], hist=True, kde=True,
                  bins=100, color='darkblue',
@@ -309,14 +310,14 @@ def plot_diff(start_date='2021-11-09',
 
     def plot_df(df):
         df.plot(kind='hist', bins=100, color='blue', edgecolor='black')
-        plt.show()
+        plt.savefig(f'{plot_path}/diff_hist.png')
 
         # Density Plot and Histogram of all differences
         sns.distplot(df['price_diff'], hist=True, kde=True,
                      bins=100, color='darkblue',
                      hist_kws={'edgecolor': 'black'},
                      kde_kws={'linewidth': 2})
-        plt.show()
+        plt.savefig(f'{plot_path}/diff_dens.png')
 
     plot_df(get_diff(absolute=False, start_date=start_date, end_date=end_date, interval='H'))
 
@@ -402,10 +403,11 @@ if __name__ == "__main__":
     plot_average_price_of_product(max_time_before_closing=1, unit='hours')
     df_acc = get_day_ahead_as_intra_day_prediction_accuracy()
     df_acc.to_csv(f'{csv_path}/accuracy_diff.csv')
-    df_acc = get_day_ahead_as_intra_day_prediction_accuracy(percentage=True)
+    df_acc = get_day_ahead_as_intra_day_prediction_accuracy(percentage=True, remove_outliers=True)
     df_acc.to_csv(f'{csv_path}/accuracy_percentage.csv')
     df_inc_dec = get_increase_decrease()
-    df_inc_dec.to_csv(f'{csv_path}/increase_decrease.csv')
+    # saved to a different directory, so it doesn't get committed
+    df_inc_dec.to_csv('../../data/increase_decrease.csv')
     df_wind_corr_0 = get_wind_correlation(time=0)
     df_wind_corr_0.to_csv(f'{csv_path}/wind_correlation_0.csv')
     df_wind_corr_12 = get_wind_correlation(time=12)
