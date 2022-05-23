@@ -2,6 +2,7 @@
 /temp_plots/
 .idea
 .DS_Store
+zapiski.txt
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
