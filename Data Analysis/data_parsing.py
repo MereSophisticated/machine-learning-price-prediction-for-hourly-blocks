@@ -3,6 +3,14 @@ import pandas as pd
 # Global intra day and day ahead dataframes for functions to use
 df_intra_day = pd.read_parquet('../data/trds.parquet', engine='pyarrow')
 
+def get_data(region: str):
+    region = region.upper()
+    frames = []
+    for i in range(1,7):
+        frames.append(pd.read_parquet('../data/ID_DE_TRADES/trds_{}.parquet'.format(i), engine='pyarrow'))
+    result = pd.concat(frames)
+    return result[result["trd_buy_delivery_area"].str.contains(region) & result["trd_sell_delivery_area"].str.contains(region)]
+
 type_dict = {
     0: 'datetime'
 }
@@ -43,7 +51,6 @@ def get_wind_forecast():
 def get_sun_data():
     df_sun_historic = pd.read_csv('../data/data_sun_2022.csv')
     return df_sun_historic
-
 
 get_wind_data()
 get_sun_data()

@@ -6,28 +6,32 @@ from sklearn import tree
 from statsmodels.tsa.stattools import adfuller, kpss, grangercausalitytests
 from statsmodels.tsa.api import VAR
 from data_parsing import get_intra_day_data_for_region, get_day_ahead_data, get_sun_data, get_wind_data, \
-    get_wind_forecast
+    get_wind_forecast, get_data
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from sklearn.tree import DecisionTreeRegressor
 from dtreeviz.trees import dtreeviz
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+from datetime import datetime, timedelta
 
 pd.set_option('display.expand_frame_repr', False)
 df_intra_day_germany = get_intra_day_data_for_region("GERMANY")
+
 
 
 def single_block():
     df_single_block = df_intra_day_germany[df_intra_day_germany['trd_delivery_time_start'] == "2022-02-01 10:00:00"]
     print(df_single_block.trd_buy_delivery_area.unique())
     print(df_single_block.trd_sell_delivery_area.unique())
-    print(df_single_block[['trd_delivery_time_start', 'trd_delivery_time_end', 'trd_execution_time']])
+    # print(df_single_block[['trd_delivery_time_start', 'trd_delivery_time_end', 'trd_execution_time']])
 
     df_single_block.iloc[::1, :].plot(x='trd_execution_time', y='trd_price',
                                       title="2022-02-01 10:00:00 - 2022-02-01 11:00:00",
                                       xlabel="Time", ylabel="Price", legend=False)
     plt.show()
+    return df_single_block                             
+    
 
 
 def transform_day_ahead(df_day_ahead):
@@ -41,7 +45,7 @@ def transform_day_ahead(df_day_ahead):
 
 def get_intra_day_min_max_mean(df_intra_day=df_intra_day_germany, interval='15min', on='trd_execution_time'):
     df_intra_day = df_intra_day.resample(interval, on=on).agg(trd_price_mean=('trd_price', np.mean),
-                                                              trd_price_min=('trd_price', np.min),
+                                                              trd_price_min=('trd_price', np.min), 
                                                               trd_price_max=('trd_price', np.max))
     df_intra_day.reset_index(inplace=True)
     return df_intra_day
@@ -124,8 +128,7 @@ def get_pct_change_dataframe(start_date='2022-02-02', end_date='2022-03-24'):
 
     # Calculate percentage change (V_2 - V_1) / V_1 (remove abs if you want to differentiate between increase / decrease
     df_pct_change['percentage_change'] = ((df_pct_change['trd_price_intra_day'] - df_day_ahead['trd_price']) /
-                                          df_day_ahead[
-                                              'trd_price']) * 100
+                                          df_day_ahead['trd_price']) * 100
 
     df_pct_change = df_pct_change[['trd_delivery_time_start',
                                    'trd_price_day_ahead',
@@ -356,6 +359,10 @@ def get_intra_day(start_date='2022-02-02', end_date='2022-03-24'):
     # Time to start of block from purchase time (execution time)
     df_intra_day['diff'] = (df_intra_day['trd_delivery_time_start']
                             - df_intra_day['trd_execution_time'])
+    
+
+    # print(df_intra_day['diff'].head())
+    
     df_intra_day = df_intra_day[(df_intra_day['trd_delivery_time_start']
                                  >= start_date)
                                 & (df_intra_day['trd_delivery_time_end']
@@ -481,7 +488,8 @@ if __name__ == "__main__":
     # increase_decrease_analysis()
     # forecast_weather_analysis()
     # granger_causality()
-    stats_plots()
+    # stats_plots()
+    pass
 
 """ 
 TODO:
@@ -526,3 +534,45 @@ Za naprej:
     Če se odločimo za klasifikacijo: - ostali pristopi morajo biti tudi ocenjeni po tem (baseline)
     Knjižnica - avtomatsko generiranje časovnih vrst / featurjev
 """
+
+
+
+# def get_intra_day22(start_date='2022-02-02', end_date='2022-03-24', date='2022-02-02'):
+#     df_intra_day = df_intra_day_germany
+
+#     start_date = datetime.strptime(str(start_date), "%Y-%m-%d")
+#     end_date = datetime.strptime(str(end_date), "%Y-%m-%d")
+
+#     # Time to start of block from purchase time (execution time)
+#     df_intra_day['diff'] = (df_intra_day['trd_delivery_time_start']
+#                             - df_intra_day['trd_execution_time'])
+
+                                
+    
+    
+#     yesterday = start_date + timedelta(days = -1)
+#     print(yesterday)
+#     # print(df_intra_day['diff'].head())
+    
+#     df_intra_day = df_intra_day[(df_intra_day['trd_delivery_time_start']
+#                                  >= yesterday)
+#                                 & (df_intra_day['trd_delivery_time_end']
+#                                    <= end_date)]
+#     # print("to iscem", df_intra_day)                                   
+#     df_intra_day = df_intra_day[df_intra_day['diff'] <= pd.Timedelta(5, unit='H')]
+
+#     print("TU JE ZAJ VAŽNO KAJ PIŠE", df_intra_day)
+#     # df_intra_day = df_intra_day.resample('H', on='trd_delivery_time_start').mean()
+#     # df_intra_day.reset_index(inplace=True)
+
+#     # # Some products might not be traded in the 5 hours before closing, so drop those
+#     # df_intra_day.dropna(inplace=True)
+
+#     df_single_block = df_intra_day_germany[df_intra_day_germany['trd_delivery_time_start'] == time_1]
+
+
+#     return df_intra_day
+
+
+
+    
