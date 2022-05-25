@@ -13,7 +13,7 @@ from yaml import serialize
 
 from statsmodels.tsa.stattools import adfuller, kpss, grangercausalitytests
 
-from data_parsing import get_intra_day_data_for_region, get_day_ahead_data, get_sun_data, get_wind_data, \
+from data_retrieval import get_intra_day_data_for_region, get_day_ahead_data, get_sun_data, get_wind_data, \
     get_wind_forecast, get_data
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker

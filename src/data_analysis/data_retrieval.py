@@ -354,3 +354,24 @@ if __name__ == "__main__":
                                     unit='minutes').set_index('trd_delivery_time_start')
     df.apply(lambda x: np.polyfit(df.index.to_pydatetime(), x, 1)[0])
     print(df)
+
+
+
+
+
+
+
+
+
+
+
+
+############### Sam na hitr sm dodal da men dela pol tut haha
+
+def get_data(region: str):
+    region = region.upper()
+    frames = []
+    for i in range(1,7):
+        frames.append(pd.read_parquet('../data/ID_DE_TRADES/trds_{}.parquet'.format(i), engine='pyarrow'))
+    result = pd.concat(frames)
+    return result[result["trd_buy_delivery_area"].str.contains(region) & result["trd_sell_delivery_area"].str.contains(region)]

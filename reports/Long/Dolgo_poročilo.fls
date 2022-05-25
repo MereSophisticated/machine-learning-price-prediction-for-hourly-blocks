@@ -1,9 +1,9 @@
-PWD /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo
+PWD /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long
 INPUT /usr/local/texlive/2021/texmf.cnf
 INPUT /usr/local/texlive/2021/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.tex
-OUTPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.log
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.tex
+OUTPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.log
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/amscls/amsart.cls
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/amscls/amsart.cls
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/amscls/amsart.cls
@@ -241,10 +241,10 @@ INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.de
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.aux
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.aux
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.aux
-OUTPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.aux
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.aux
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.aux
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.aux
+OUTPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.aux
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -282,55 +282,70 @@ INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-OUTPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.pdf
+OUTPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.pdf
 INPUT /usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.toc
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.toc
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.toc
-OUTPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.toc
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.lof
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.lof
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.lof
-OUTPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.lof
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.toc
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.toc
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.toc
+OUTPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.toc
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.lof
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.lof
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.lof
+OUTPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.lof
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmti12.tfm
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/curve.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/curve.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/curve.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/curve.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/curve.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/curve.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/curve.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/curve.png
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/porazdelitev_germany_2021.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/porazdelitev_germany_2021.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/porazdelitev_germany_2021.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/porazdelitev_germany_2021.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/porazdelitev_germany_2021.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/wind_2016.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/wind_2016.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/wind_2016.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/wind_2016.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/wind_2016.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/solar_2016.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/solar_2016.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/solar_2016.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/solar_2016.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/solar_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/porazdelitev_germany_2021.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/porazdelitev_germany_2021.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/porazdelitev_germany_2021.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/porazdelitev_germany_2021.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/porazdelitev_germany_2021.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/wind_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/wind_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/wind_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/wind_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/wind_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/solar_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/solar_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/solar_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/solar_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/solar_2016.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/difference_dist.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/difference_dist.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/difference_dist.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/difference_dist.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/difference_dist.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/percentage_dist.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/percentage_dist.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/percentage_dist.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/percentage_dist.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/percentage_dist.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/average_price_2021-11-10-2021-11-12-mNone-MNone-hours.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/average_price_2021-11-10-2021-11-12-mNone-MNone-hours.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/average_price_2021-11-10-2021-11-12-mNone-MNone-hours.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/average_price_2021-11-10-2021-11-12-mNone-MNone-hours.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/average_price_2021-11-10-2021-11-12-mNone-MNone-hours.png
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Arima.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Arima.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Arima.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Arima.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Arima.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Prediciton_intraday.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Prediciton_intraday.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Prediciton_intraday.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Prediciton_intraday.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Prediciton_intraday.png
-INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/Dolgo poročilo/Dolgo_poročilo.aux
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Arima.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Arima.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Arima.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Arima.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Arima.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Prediciton_intraday.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Prediciton_intraday.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Prediciton_intraday.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Prediciton_intraday.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Prediciton_intraday.png
+INPUT /Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/reports/Long/Dolgo_poročilo.aux
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb

@@ -229,32 +229,33 @@ Zaradi nedostopnosti podatkov tako dnevnega in znotraj dnevnega bodo ti pridoblj
 
 Preden se lahko lotimo kakršnegakoli napovednega modela, nas zanima ali je cena na dnevnem trgu dobra kot izhodiščna napoved cene na znotraj dnevnem trgu. Izkaže se, da je razlika v obliki normalne distribucije, s središčem blizu ničle.
 
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[scale=0.75]{difference_dist.png}
-%     \caption{Razlika med ceno na dnevnem in znotraj dnevnem trgu}
-%     \label{fig:Razlika}
-% \end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.75]{/Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/difference_dist.png}
+    \caption{Razlika med ceno na dnevnem in znotraj dnevnem trgu}
+    \label{fig:Razlika}
+\end{figure}
 
-% Podobno tudi ob pregledu spremembe v procentih, kjer so zaradi možnih zelo majhnih vrednosti (spremembe privedejo do ekstremnih procentov) odstranjene izstopajoče vrednosti glede na interkvartilni razmik.
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[scale=0.75]{percentage_dist.png}
-%     \caption{Razlika med ceno na dnevnem in znotraj dnevnem trgu}
-%     \label{fig:Razlika}
-% \end{figure}
+Podobno tudi ob pregledu spremembe v procentih, kjer so zaradi možnih zelo majhnih vrednosti (spremembe privedejo do ekstremnih procentov) odstranjene izstopajoče vrednosti glede na interkvartilni razmik.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.75]{/Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/percentage_dist.png}
+    \caption{Razlika med ceno na dnevnem in znotraj dnevnem trgu}
+    \label{fig:Razlika}
+\end{figure}
 
 \pagebreak
 Tako lahko predpostavimo, da je cena na dnevnem trgu primerna za uporabo napovedi cene na znotraj dnevnem trgu.
 
 Če zelo poslošimo model in uporabimo le eno ceno namesto posamičnih cen, bomo najverjetneje podcenili dejansko tveganje trgovanja, kar je razvidno na grafu, ko sta cena na dnevnem trgu in povprečna cena na znotraj dnevnem trgu med seboj zelo blizu, a hkrati obstaja velik razmak med minimalno in maksimalno ceno na znotraj dnevnem trgu v istem časovnem obdobju.
 
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[scale=0.75]{average_price_2021-11-10-2021-11-12-mNone-MNone-hours.png}
-%     \caption{Razlika med ceno na dnevnem in znotraj dnevnem trgu}
-%     \label{fig:Razlika}
-% \end{figure}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.75]{/Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks/src/data_analysis/plots/average_price_2021-11-10-2021-11-12-mNone-MNone-hours.png}
+    \caption{Razlika med ceno na dnevnem in znotraj dnevnem trgu}
+    \label{fig:Razlika}
+\end{figure}
 
 Zato namesto tega napovedujemo povprečne cene posamičnih produktov znotraj časovnega intervala nekaj časa pred zaprtjem trgovanja s tem produktom.
 
