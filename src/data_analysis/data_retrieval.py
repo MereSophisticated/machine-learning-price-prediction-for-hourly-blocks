@@ -140,6 +140,23 @@ def get_wind(start_date=None,
     return df
 
 
+def get_wind_diff(start_date=None,
+                  end_date=None):
+    df = get_wind(start_date=start_date, end_date=end_date)
+    df = df.drop(columns=['ec00 dateOfPredictionMade',
+                          'gfs00 dateOfPredictionMade',
+                          'icon00 dateOfPredictionMade'])
+    df = df.resample('H').agg({'wnd Actual de': 'mean',
+                               'ec00': 'last',
+                               'gfs00': 'last',
+                               'icon00': 'last'
+                               })
+    df['ec00_delta'] = df['wnd Actual de'] - df['ec00']
+    df['gfs00_delta'] = df['wnd Actual de'] - df['gfs00']
+    df['icon00_delta'] = df['wnd Actual de'] - df['icon00']
+    return df
+
+
 def get_residual_load(start_date=None,
                       end_date=None):
     """
@@ -154,6 +171,20 @@ def get_residual_load(start_date=None,
     return df
 
 
+def get_residual_load_diff(start_date=None,
+                           end_date=None):
+    df = get_residual_load(start_date=start_date, end_date=end_date)
+    df = df.drop(columns=['ec00 dateOfPredictionMade',
+                          'gfs00 dateOfPredictionMade'])
+    df = df.resample('H').agg({'rdl Actual de': 'mean',
+                               'ec00': 'last',
+                               'gfs00': 'last'
+                               })
+    df['ec00_delta'] = df['rdl Actual de'] - df['ec00']
+    df['gfs00_delta'] = df['rdl Actual de'] - df['gfs00']
+    return df
+
+
 def get_solar(start_date=None,
               end_date=None):
     """
@@ -165,6 +196,23 @@ def get_solar(start_date=None,
     if start_date and end_date:
         df = df[(df.index >= f'{start_date} 00:00:00') &
                 (df.index <= f'{end_date} 23:59:59')]
+    return df
+
+
+def get_solar_diff(start_date=None,
+                   end_date=None):
+    df = get_solar(start_date=start_date, end_date=end_date)
+    df = df.drop(columns=['ec00 dateOfPredictionMade',
+                          'gfs00 dateOfPredictionMade',
+                          'icon00 dateOfPredictionMade'])
+    df = df.resample('H').agg({'spv Actual de': 'mean',
+                               'ec00': 'last',
+                               'gfs00': 'last',
+                               'icon00': 'last'
+                               })
+    df['ec00_delta'] = df['spv Actual de'] - df['ec00']
+    df['gfs00_delta'] = df['spv Actual de'] - df['gfs00']
+    df['icon00_delta'] = df['spv Actual de'] - df['icon00']
     return df
 
 
@@ -368,7 +416,6 @@ def get_intra_day_mean(interval='H',
 
 
 def get_std_by_day(absolute=False,
-                   interval='H',
                    max_time_before_closing=None,
                    min_time_before_closing=None,
                    unit='hours',
@@ -396,7 +443,6 @@ def get_std_by_day(absolute=False,
     """
 
     df = get_diff(absolute=absolute,
-                  interval=interval,
                   max_time_before_closing=max_time_before_closing,
                   min_time_before_closing=min_time_before_closing,
                   unit=unit,
@@ -600,7 +646,7 @@ if __name__ == "__main__":
 
     print(df_slope)
     #df = df.merge(df_slope, how='left', on=['year', 'month', 'day', 'hour'])"""
-    #print(get_labeled_data(simple=True)['label'].value_counts())
+    # print(get_labeled_data(simple=True)['label'].value_counts())
     print(get_wind())
     print(get_solar())
     print(get_residual_load())

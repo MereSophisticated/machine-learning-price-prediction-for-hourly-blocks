@@ -12,7 +12,7 @@ from statsmodels.tsa.stattools import grangercausalitytests
 
 from data_retrieval import get_wind_forecast, \
     get_transformed_day_ahead, get_intra_day_min_max_mean, get_diff, get_pct_change_dataframe, get_intra_day_by_hours, \
-    get_wind, get_solar, get_residual_load
+    get_wind, get_solar, get_residual_load, get_wind_diff, get_solar_diff, get_residual_load_diff
 
 plot_path = "plots"
 csv_path = "csv"
@@ -140,7 +140,6 @@ def get_day_ahead_as_intra_day_prediction_accuracy(box_plot=False,
         name = 'difference'
         column = 'price_diff'
         df = get_diff(absolute=False,
-                      interval=interval,
                       max_time_before_closing=max_time_before_closing,
                       min_time_before_closing=min_time_before_closing,
                       unit=unit,
@@ -269,18 +268,7 @@ def get_wind_diff_correlation(start_date='2021-11-09',
     :param end_date: filter trades to those that happened on or before end_date
     :return: dataframe of correlations
     """
-    df = get_wind()
-    df = df.drop(columns=['ec00 dateOfPredictionMade',
-                          'gfs00 dateOfPredictionMade',
-                          'icon00 dateOfPredictionMade'])
-    df = df.resample('H').agg({'wnd Actual de': 'mean',
-                               'ec00': 'last',
-                               'gfs00': 'last',
-                               'icon00': 'last'
-                               })
-    df['ec00_delta'] = df['wnd Actual de'] - df['ec00']
-    df['gfs00_delta'] = df['wnd Actual de'] - df['gfs00']
-    df['icon00_delta'] = df['wnd Actual de'] - df['icon00']
+    df = get_wind_diff()
     df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
                   left_index=True, right_index=True)
 
@@ -296,26 +284,15 @@ def get_solar_diff_correlation(start_date='2021-11-09',
     :param end_date: filter trades to those that happened on or before end_date
     :return: dataframe of correlations
     """
-    df = get_solar()
-    df = df.drop(columns=['ec00 dateOfPredictionMade',
-                          'gfs00 dateOfPredictionMade',
-                          'icon00 dateOfPredictionMade'])
-    df = df.resample('H').agg({'spv Actual de': 'mean',
-                               'ec00': 'last',
-                               'gfs00': 'last',
-                               'icon00': 'last'
-                               })
-    df['ec00_delta'] = df['spv Actual de'] - df['ec00']
-    df['gfs00_delta'] = df['spv Actual de'] - df['gfs00']
-    df['icon00_delta'] = df['spv Actual de'] - df['icon00']
+    df = get_solar_diff(start_date=start_date, end_date=end_date)
     df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
                   left_index=True, right_index=True)
 
     return df[['ec00_delta', 'gfs00_delta']].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
 
 
-def get_residual_load_correlation(start_date='2021-11-09',
-                                  end_date='2022-03-23'):
+def get_residual_load_diff_correlation(start_date='2021-11-09',
+                                       end_date='2022-03-23'):
     """
     Calculates correlation between the transformed values for difference of forecast and actual solar power
     and the difference in price between intra-day and day-ahead
@@ -323,15 +300,7 @@ def get_residual_load_correlation(start_date='2021-11-09',
     :param end_date: filter trades to those that happened on or before end_date
     :return: dataframe of correlations
     """
-    df = get_residual_load()
-    df = df.drop(columns=['ec00 dateOfPredictionMade',
-                          'gfs00 dateOfPredictionMade'])
-    df = df.resample('H').agg({'rdl Actual de': 'mean',
-                               'ec00': 'last',
-                               'gfs00': 'last'
-                               })
-    df['ec00_delta'] = df['rdl Actual de'] - df['ec00']
-    df['gfs00_delta'] = df['rdl Actual de'] - df['gfs00']
+    df = get_residual_load_diff(start_date=start_date, end_date=end_date)
     df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
                   left_index=True, right_index=True)
 
@@ -396,7 +365,7 @@ def plot_diff(start_date='2021-11-09',
                      kde_kws={'linewidth': 2})
         plt.savefig(f'{plot_path}/diff_dens.png')
 
-    plot_df(get_diff(absolute=False, start_date=start_date, end_date=end_date, interval='H'))
+    plot_df(get_diff(absolute=False, start_date=start_date, end_date=end_date))
 
 
 def plot_std_of_diff_by_day(max_time_before_closing=None,
@@ -474,7 +443,7 @@ def get_grangers_causation_matrix(data, variables, test='ssr_chi2test', verbose=
 
 
 if __name__ == "__main__":
-    plot_price_at_given_time()
+    """ plot_price_at_given_time()
     plot_average_price_of_product()
     plot_average_price_of_product(max_time_before_closing=30, unit='minutes')
     plot_average_price_of_product(max_time_before_closing=1, unit='hours')
@@ -493,4 +462,10 @@ if __name__ == "__main__":
     plot_diff()
     plot_std_of_diff_by_day()
     df_granger_causation_matrix = granger_causality()
-    df_granger_causation_matrix.to_csv(f'{csv_path}/granger_causality.csv')
+    df_granger_causation_matrix.to_csv(f'{csv_path}/granger_causality.csv')"""
+    df_wind_diff_corr = get_wind_diff_correlation()
+    df_wind_diff_corr.to_csv(f'{csv_path}/wind_diff_corr.csv')
+    df_solar_diff_corr = get_solar_diff_correlation()
+    df_solar_diff_corr.to_csv(f'{csv_path}/solar_diff_corr.csv')
+    df_residual_diff_corr = get_residual_load_diff_correlation()
+    df_residual_diff_corr.to_csv(f'{csv_path}/residual_diff_corr.csv')
