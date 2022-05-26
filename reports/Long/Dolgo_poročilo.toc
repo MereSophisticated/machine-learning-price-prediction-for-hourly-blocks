@@ -1,0 +1,15 @@
+\babel@toc {slovene}{}
+\contentsline {section}{Slike}{2}{}%
+\contentsline {section}{\tocsection {}{1}{Motivacija}}{3}{}%
+\contentsline {section}{\tocsection {}{2}{Opis naloge}}{3}{}%
+\contentsline {section}{\tocsection {}{3}{Električni trg v Evropi}}{3}{}%
+\contentsline {section}{\tocsection {}{4}{Dnevni in znotraj dnevni trg}}{4}{}%
+\contentsline {section}{\tocsection {}{5}{Nemčija}}{5}{}%
+\contentsline {section}{\tocsection {}{6}{Vremenski podatki}}{5}{}%
+\contentsline {section}{\tocsection {}{7}{Podatki o cenah na dnevnem in znotraj dnevnem trgu}}{6}{}%
+\contentsline {section}{\tocsection {}{8}{Analiza podatkov}}{7}{}%
+\contentsline {section}{\tocsection {}{9}{Časovne vrste in modeli}}{8}{}%
+\contentsline {subsection}{\tocsubsection {}{9.1}{SARIMA}}{10}{}%
+\contentsline {subsection}{\tocsubsection {}{9.2}{Prophet}}{10}{}%
+\contentsline {subsection}{\tocsubsection {}{9.3}{Orbit}}{11}{}%
+\contentsline {section}{\tocsection {}{10}{Rezultati}}{12}{}%

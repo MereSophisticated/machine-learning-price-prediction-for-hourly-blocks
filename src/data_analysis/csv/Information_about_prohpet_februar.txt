@@ -1,0 +1,155 @@
+
+ 
+ Začetni datum 2022-02-10, X = 3.0, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.8594276094276094 
+ Kolikšna je povprečna napaka 76.286712749165 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.1978114478114478  
+ 20 procentni absolutni interval 0.3653198653198653 
+ 30 procentni absolutni interval 0.5084175084175084  
+ 50 procentni interval 0.6742424242424242  
+ 100 procentni interval 0.8333333333333334
+ 
+ Začetni datum 2022-02-10, X = 3.5, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.8168067226890756 
+ Kolikšna je povprečna napaka 71.45194355224702 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.20252100840336135  
+ 20 procentni absolutni interval 0.3865546218487395 
+ 30 procentni absolutni interval 0.5243697478991597  
+ 50 procentni interval 0.6941176470588235  
+ 100 procentni interval 0.838655462184874
+ 
+ Začetni datum 2022-02-10, X = 4.0, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.7605042016806722 
+ Kolikšna je povprečna napaka 67.14760124962491 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.21596638655462186  
+ 20 procentni absolutni interval 0.4 
+ 30 procentni absolutni interval 0.5327731092436975  
+ 50 procentni interval 0.7151260504201681  
+ 100 procentni interval 0.8571428571428571
+ 
+ Začetni datum 2022-02-10, X = 4.5, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.7237615449202351 
+ Kolikšna je povprečna napaka 64.80029793116448 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.2174643157010915  
+ 20 procentni absolutni interval 0.4139378673383711 
+ 30 procentni absolutni interval 0.5541561712846348  
+ 50 procentni interval 0.7237615449202351  
+ 100 procentni interval 0.8656591099916037
+ 
+ Začetni datum 2022-02-10, X = 5.0, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.6767422334172963 
+ Kolikšna je povprečna napaka 62.62776705674282 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.22670025188916876  
+ 20 procentni absolutni interval 0.4139378673383711 
+ 30 procentni absolutni interval 0.5709487825356843  
+ 50 procentni interval 0.7355163727959698  
+ 100 procentni interval 0.874895046179681
+ 
+ Začetni datum 2022-02-10, X = 5.5, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.6208053691275168 
+ Kolikšna je povprečna napaka 61.71739551922807 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.22902684563758388  
+ 20 procentni absolutni interval 0.41191275167785235 
+ 30 procentni absolutni interval 0.5738255033557047  
+ 50 procentni interval 0.7323825503355704  
+ 100 procentni interval 0.8791946308724832
+ 
+ Začetni datum 2022-02-10, X = 6.0, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.572986577181208 
+ Kolikšna je povprečna napaka 60.67275988785725 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.2332214765100671  
+ 20 procentni absolutni interval 0.41946308724832215 
+ 30 procentni absolutni interval 0.5788590604026845  
+ 50 procentni interval 0.7332214765100671  
+ 100 procentni interval 0.8842281879194631
+ 
+ Začetni datum 2022-02-10, X = 6.5, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.5385906040268457 
+ Kolikšna je povprečna napaka 59.79778966648058 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.23825503355704697  
+ 20 procentni absolutni interval 0.4312080536912752 
+ 30 procentni absolutni interval 0.5855704697986577  
+ 50 procentni interval 0.735738255033557  
+ 100 procentni interval 0.886744966442953
+ 
+ Začetni datum 2022-02-10, X = 7.0, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.4979044425817267 
+ Kolikšna je povprečna napaka 59.066521355225184 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.24643755238893544  
+ 20 procentni absolutni interval 0.43671416596814755 
+ 30 procentni absolutni interval 0.5926236378876781  
+ 50 procentni interval 0.7426655490360435  
+ 100 procentni interval 0.8851634534786254
+ 
+ Začetni datum 2022-02-10, X = 7.5, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.4752724224643755 
+ Kolikšna je povprečna napaka 58.2753958597662 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.25230511316010057  
+ 20 procentni absolutni interval 0.44341994970662196 
+ 30 procentni absolutni interval 0.5968147527242247  
+ 50 procentni interval 0.7460184409052808  
+ 100 procentni interval 0.8885163453478625
+ 
+ Začetni datum 2022-02-10, X = 8.0, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.42797319932998323 
+ Kolikšna je povprečna napaka 57.72380408956688 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.2562814070351759  
+ 20 procentni absolutni interval 0.45226130653266333 
+ 30 procentni absolutni interval 0.592964824120603  
+ 50 procentni interval 0.7470686767169179  
+ 100 procentni interval 0.8919597989949749
+ 
+ Začetni datum 2022-02-10, X = 8.5, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.4045226130653266 
+ Kolikšna je povprečna napaka 57.23304662438029 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.25711892797319935  
+ 20 procentni absolutni interval 0.4581239530988275 
+ 30 procentni absolutni interval 0.5971524288107203  
+ 50 procentni interval 0.7495812395309883  
+ 100 procentni interval 0.890284757118928
+ 
+ Začetni datum 2022-02-10, X = 9.0, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.3777219430485762 
+ Kolikšna je povprečna napaka 56.562229400898346 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.25963149078726966  
+ 20 procentni absolutni interval 0.4564489112227806 
+ 30 procentni absolutni interval 0.5988274706867671  
+ 50 procentni interval 0.7512562814070352  
+ 100 procentni interval 0.8927973199329984
+ 
+
+
+ Začetni datum 2022-02-10, X = 30.0, in za koliko dni je narejena analiza 50 
+ kolikokrat zadanemo interval Propheta 0.16847372810675562 
+ Kolikšna je povprečna napaka 50.866864732762274 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.2727272727272727  
+ 20 procentni absolutni interval 0.49958298582151794 
+ 30 procentni absolutni interval 0.6355296080066722  
+ 50 procentni interval 0.7856547122602169  
+ 100 procentni interval 0.9090909090909091
+ 
+ 
+ Seznam: Prophet, 10%, 20%, 30%, 50%, 100%[[],[],[],[],[],[]]
+ 
+ Seznam: Absolutna napaka, Prophet, 10%, 20%, 30%, 50%, 100%
+ [[76.286712749165, 71.45194355224702, , 67.14760124962491, 64.80029793116448, 62.62776705674282, 61.71739551922807, 60.67275988785725,59.79778966648058, 59.066521355225184, 58.2753958597662, 57.72380408956688, 57.23304662438029, 56.562229400898346, 0.16847372810675562], 
+ [0.8594276094276094, 0.8168067226890756,  0.7605042016806722, 0.7237615449202351, 0.6767422334172963, 0.6208053691275168, 0.572986577181208, 0.5385906040268457, 0.4979044425817267,  0.4752724224643755, 0.42797319932998323, 0.4045226130653266, 0.3777219430485762, 0.16847372810675562], 
+ [0.1978114478114478, 0.20252100840336135,  0.21596638655462186, 0.2174643157010915, 0.22670025188916876, 0.22902684563758388, 0.2332214765100671,0.23825503355704697, 0.24643755238893544, 0.25230511316010057, 0.2562814070351759, 0.25711892797319935, 0.25963149078726966, 0.2727272727272727], 
+ [0.3653198653198653, 0.3865546218487395, 0.4,  0.4139378673383711, 0.4139378673383711, 0.41191275167785235, 0.41946308724832215, 0.4312080536912752, 0.43671416596814755, 0.44341994970662196, 0.45226130653266333, 0.4581239530988275, 0.4564489112227806, 0.49958298582151794], 
+ [0.5084175084175084, 0.5243697478991597,  0.5327731092436975, 0.5541561712846348, 0.5709487825356843, 0.5738255033557047, 0.5788590604026845, 0.5855704697986577, 0.5926236378876781, 0.5968147527242247, 0.592964824120603, 0.5971524288107203, 0.5988274706867671, 0.6355296080066722], 
+ [0.6742424242424242, 0.6941176470588235, 0.7151260504201681, 0.7237615449202351, 0.7355163727959698, 0.7323825503355704, 0.7332214765100671, 0.735738255033557, 0.7426655490360435, 0.7460184409052808, 0.7470686767169179,0.7495812395309883, 0.7512562814070352, 0.7856547122602169], 
+ [0.8333333333333334, 0.838655462184874, 0.8571428571428571, 0.8656591099916037, 0.874895046179681, 0.8791946308724832, 0.8842281879194631, 0.886744966442953, 0.8851634534786254, 0.8885163453478625, 0.8919597989949749, 0.890284757118928, 0.8927973199329984, 0.9090909090909091]]
