@@ -27,7 +27,7 @@ print(f'RMSE: {math.sqrt(mean_squared_error(y_test, predictions))}')
 
 
 explainer = shap.TreeExplainer(xgb_model)
-shap_values = explainer.shap_values(X_train)
+shap_values = explainer.shap_values(X_train, check_additivity=False)
 shap.summary_plot(shap_values, X_train, plot_type="bar", show=False)
 plt.tight_layout()
 plt.show()

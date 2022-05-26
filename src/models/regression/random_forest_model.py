@@ -15,6 +15,19 @@ X, y, X_train, X_test, y_train, y_test = get_prepared_data()
 model = RandomForestRegressor(n_estimators=100, random_state=0)
 model.fit(X_train, y_train)
 
+
+predictions = model.predict(X_test)
+errors = abs(predictions - y_test)
+
+print(f'Average absolute error:{round(np.mean(errors), 2)}')
+
+mape = np.mean(100 * (errors / y_test))
+
+accuracy = 100 - mape
+print(f'MAPE: {mape}')
+print(f'MSE: {mean_squared_error(y_test, predictions)}')
+print(f'RMSE: {math.sqrt(mean_squared_error(y_test, predictions))}')
+
 explainer = shap.TreeExplainer(model)
 shap_values = explainer.shap_values(X_train)
 shap.summary_plot(shap_values, X_train, plot_type="bar", show=False)
@@ -28,7 +41,7 @@ plt.gcf().axes[-1].set_box_aspect(100)
 plt.tight_layout()
 plt.show()
 
-for column in X_train.columns:
+"""for column in X_train.columns:
     if column != 'trd_price':
         shap.dependence_plot(column, shap_values, X_train, interaction_index="trd_price")
 shap.force_plot(explainer.expected_value, shap_values[0,:], X.iloc[0,:])
@@ -68,6 +81,6 @@ if isinstance(shap_interaction_values, list):
 
 shap.decision_plot(explainer.expected_value, shap_values, X)
 print(y_test[0:24])
-print(predictions[0:24])
+print(predictions[0:24])"""
 
 

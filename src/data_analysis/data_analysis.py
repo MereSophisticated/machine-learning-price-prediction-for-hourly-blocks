@@ -11,7 +11,8 @@ from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import grangercausalitytests
 
 from data_retrieval import get_wind_forecast, \
-    get_transformed_day_ahead, get_intra_day_min_max_mean, get_diff, get_pct_change_dataframe, get_intra_day_by_hours
+    get_transformed_day_ahead, get_intra_day_min_max_mean, get_diff, get_pct_change_dataframe, get_intra_day_by_hours, \
+    get_wind, get_solar, get_residual_load, get_wind_diff, get_solar_diff, get_residual_load_diff
 
 plot_path = "plots"
 csv_path = "csv"
@@ -92,7 +93,7 @@ def plot_average_price_of_product(max_time_before_closing=None,
     ax.set_ylabel("Price")
     plt.tight_layout()
     plt.savefig(f'{plot_path}/average_price_{start_date}-{end_date}'
-                f'-m{min_time_before_closing}-M{min_time_before_closing}-{unit}.png')
+                f'-m{min_time_before_closing}-M{max_time_before_closing}-{unit}.png')
 
 
 def get_day_ahead_as_intra_day_prediction_accuracy(box_plot=False,
@@ -139,7 +140,6 @@ def get_day_ahead_as_intra_day_prediction_accuracy(box_plot=False,
         name = 'difference'
         column = 'price_diff'
         df = get_diff(absolute=False,
-                      interval=interval,
                       max_time_before_closing=max_time_before_closing,
                       min_time_before_closing=min_time_before_closing,
                       unit=unit,
@@ -174,10 +174,8 @@ def get_day_ahead_as_intra_day_prediction_accuracy(box_plot=False,
     df.plot(kind='hist', bins=100, color='blue', edgecolor='black')
     plt.savefig(f'{plot_path}/{name}_change_hist.png')
 
-    sns.distplot(df[column], hist=True, kde=True,
-                 bins=100, color='darkblue',
-                 hist_kws={'edgecolor': 'black'},
-                 kde_kws={'linewidth': 2})
+    ax = sns.displot(data=df, x=column, kde=True)
+    ax.set(xlabel='Razlika med ceno na dnevnem in znotraj dnevnem trgu', ylabel='Število')
     plt.savefig(f'{plot_path}/{name}_dist.png')
 
     # var and std by hour of day
@@ -261,6 +259,54 @@ def get_wind_correlation(time,
     return df[df.columns[1:14]].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
 
 
+def get_wind_diff_correlation(start_date='2021-11-09',
+                              end_date='2022-03-23'):
+    """
+    Calculates correlation between the difference of forecast and actual wind power
+    and the difference in price between intra-day and day-ahead
+    :param start_date: filter trades to those that happened on or after start_date
+    :param end_date: filter trades to those that happened on or before end_date
+    :return: dataframe of correlations
+    """
+    df = get_wind_diff()
+    df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
+                  left_index=True, right_index=True)
+
+    return df[['ec00_delta', 'gfs00_delta', 'icon00_delta']].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
+
+
+def get_solar_diff_correlation(start_date='2021-11-09',
+                               end_date='2022-03-23'):
+    """
+    Calculates correlation between the transformed values for difference of forecast and actual solar power
+    and the difference in price between intra-day and day-ahead
+    :param start_date: filter trades to those that happened on or after start_date
+    :param end_date: filter trades to those that happened on or before end_date
+    :return: dataframe of correlations
+    """
+    df = get_solar_diff(start_date=start_date, end_date=end_date)
+    df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
+                  left_index=True, right_index=True)
+
+    return df[['ec00_delta', 'gfs00_delta']].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
+
+
+def get_residual_load_diff_correlation(start_date='2021-11-09',
+                                       end_date='2022-03-23'):
+    """
+    Calculates correlation between the transformed values for difference of forecast and actual solar power
+    and the difference in price between intra-day and day-ahead
+    :param start_date: filter trades to those that happened on or after start_date
+    :param end_date: filter trades to those that happened on or before end_date
+    :return: dataframe of correlations
+    """
+    df = get_residual_load_diff(start_date=start_date, end_date=end_date)
+    df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
+                  left_index=True, right_index=True)
+
+    return df[['ec00_delta', 'gfs00_delta']].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
+
+
 def plot_seasonality():
     """
     Plots observed, trend, seasonal and residual time series
@@ -319,7 +365,7 @@ def plot_diff(start_date='2021-11-09',
                      kde_kws={'linewidth': 2})
         plt.savefig(f'{plot_path}/diff_dens.png')
 
-    plot_df(get_diff(absolute=False, start_date=start_date, end_date=end_date, interval='H'))
+    plot_df(get_diff(absolute=False, start_date=start_date, end_date=end_date))
 
 
 def plot_std_of_diff_by_day(max_time_before_closing=None,
@@ -397,7 +443,7 @@ def get_grangers_causation_matrix(data, variables, test='ssr_chi2test', verbose=
 
 
 if __name__ == "__main__":
-    plot_price_at_given_time()
+    """ plot_price_at_given_time()
     plot_average_price_of_product()
     plot_average_price_of_product(max_time_before_closing=30, unit='minutes')
     plot_average_price_of_product(max_time_before_closing=1, unit='hours')
@@ -416,4 +462,10 @@ if __name__ == "__main__":
     plot_diff()
     plot_std_of_diff_by_day()
     df_granger_causation_matrix = granger_causality()
-    df_granger_causation_matrix.to_csv(f'{csv_path}/granger_causality.csv')
+    df_granger_causation_matrix.to_csv(f'{csv_path}/granger_causality.csv')"""
+    df_wind_diff_corr = get_wind_diff_correlation()
+    df_wind_diff_corr.to_csv(f'{csv_path}/wind_diff_corr.csv')
+    df_solar_diff_corr = get_solar_diff_correlation()
+    df_solar_diff_corr.to_csv(f'{csv_path}/solar_diff_corr.csv')
+    df_residual_diff_corr = get_residual_load_diff_correlation()
+    df_residual_diff_corr.to_csv(f'{csv_path}/residual_diff_corr.csv')
