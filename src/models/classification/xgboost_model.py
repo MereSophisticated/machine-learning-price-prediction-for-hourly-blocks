@@ -1,14 +1,13 @@
 import time
 
-import matplotlib.pyplot as plt
 import shap
+import xgboost as xgb
+from matplotlib import pyplot as plt
 from sklearn import metrics
-from sklearn.ensemble import RandomForestClassifier
-
 from src.data_analysis.data_retrieval import get_train_test_split
 
 plot_path = 'plots'
-model = RandomForestClassifier(n_estimators=100, random_state=0)
+model = xgb.XGBClassifier(use_label_encoder=False, eval_metric='mlogloss')
 
 
 def train_and_test_model(X_train, X_test, y_train, y_test, plt_title):
@@ -21,7 +20,8 @@ def train_and_test_model(X_train, X_test, y_train, y_test, plt_title):
        :param plt_title: plot title
        :return: None
        """
-    plt_title = "c_random_forest_" + plt_title
+    plt_title = "c_xgboost_" + plt_title
+    print(plt_title)
     model.fit(X_train, y_train)
 
     predictions = model.predict(X_test)

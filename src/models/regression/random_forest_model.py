@@ -1,5 +1,5 @@
 import math
-import warnings
+import time
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -7,80 +7,94 @@ import shap
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 
-from src.data_analysis.data_retrieval import get_prepared_data
+from src.data_analysis.data_retrieval import get_train_test_split
 
-X, y, X_train, X_test, y_train, y_test = get_prepared_data()
-
-
+plot_path = 'plots'
 model = RandomForestRegressor(n_estimators=100, random_state=0)
-model.fit(X_train, y_train)
 
 
-predictions = model.predict(X_test)
-errors = abs(predictions - y_test)
+def train_and_test_model(X_train, X_test, y_train, y_test, plt_title):
+    """
+    Train and test the model on the input dataset, then plot feature importance with shap.
+    :param X_train: train input dataset
+    :param X_test: test input dataset
+    :param y_train: train targets
+    :param y_test: test targets
+    :param plt_title: plot title
+    :return: None
+    """
+    plt_title = "r_random_forest_" + plt_title
+    model.fit(X_train, y_train)
 
-print(f'Average absolute error:{round(np.mean(errors), 2)}')
+    predictions = model.predict(X_test)
+    errors = abs(predictions - y_test)
 
-mape = np.mean(100 * (errors / y_test))
+    print(f'{plt_title}:')
+    print(f'Average absolute error:{round(np.mean(errors), 2)}')
+    mape = np.mean(100 * (errors / y_test))
+    print(f'MAPE: {mape}')
+    print(f'MSE: {mean_squared_error(y_test, predictions)}')
+    print(f'RMSE: {math.sqrt(mean_squared_error(y_test, predictions))}')
 
-accuracy = 100 - mape
-print(f'MAPE: {mape}')
-print(f'MSE: {mean_squared_error(y_test, predictions)}')
-print(f'RMSE: {math.sqrt(mean_squared_error(y_test, predictions))}')
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(X_train)
+    shap.summary_plot(shap_values, X_train, plot_type="bar", show=False)
+    plt.tight_layout()
+    plt.savefig(f'{plot_path}/{plt_title}_imp.png')
+    plt.clf()
 
-explainer = shap.TreeExplainer(model)
-shap_values = explainer.shap_values(X_train)
-shap.summary_plot(shap_values, X_train, plot_type="bar", show=False)
-plt.tight_layout()
-plt.show()
+    shap.summary_plot(shap_values, X_train, show=False)
+    # Fix high/low bar display in shap (another option is to set color_bar=False in summary plot and call plt.colorbar()
+    plt.gcf().axes[-1].set_aspect(100)
+    plt.gcf().axes[-1].set_box_aspect(100)
+    plt.tight_layout()
+    plt.savefig(f'{plot_path}/{plt_title}_avg_imp.png')
+    plt.clf()
+    print(50*"-")
 
-shap.summary_plot(shap_values, X_train, show=False)
-# Fix high/low bar display in shap (another option is to set color_bar=False in summary plot and call plt.colorbar()
-plt.gcf().axes[-1].set_aspect(100)
-plt.gcf().axes[-1].set_box_aspect(100)
-plt.tight_layout()
-plt.show()
+if __name__ == "__main__":
+    # SINGLE DAY
+    start = time.time()
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-21 00:00:00',
+                                                            base=True)
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="single_day_baseline")
 
-"""for column in X_train.columns:
-    if column != 'trd_price':
-        shap.dependence_plot(column, shap_values, X_train, interaction_index="trd_price")
-shap.force_plot(explainer.expected_value, shap_values[0,:], X.iloc[0,:])
-#shap.dependence_plot('day', shap_values, X_train, interaction_index="trd_price")
-#shap.dependence_plot('weekend', shap_values, X_train, interaction_index="trd_price")
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-21 00:00:00')
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="single_day")
 
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-21 00:00:00',
+                                                            exogenous=True)
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="single_day_exo")
 
-predictions = model.predict(X_test)
-errors = abs(predictions - y_test)
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-21 00:00:00',
+                                                            next_day=True)
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="single_day_next")
 
-print(f'Average absolute error:{round(np.mean(errors), 2)}')
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-21 00:00:00',
+                                                            exogenous=True,
+                                                            next_day=True)
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="single_day_next_exo")
 
-mape = np.mean(100 * (errors / y_test))
+    # 20 DAY
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-03 00:00:00',
+                                                            base=True)
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="20_day_baseline")
 
-accuracy = 100 - mape
-print(f'MAPE: {mape}')
-print(f'MSE: {mean_squared_error(y_test, predictions)}')
-print(f'RMSE: {math.sqrt(mean_squared_error(y_test, predictions))}')
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-03 00:00:00')
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="20_day")
 
-expected_value = explainer.expected_value
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-03 00:00:00',
+                                                            exogenous=True)
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="20_day_exo")
 
-if isinstance(expected_value, list):
-    expected_value = expected_value#[1]
-print(f"Explainer expected value: {expected_value}")
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-03 00:00:00',
+                                                            next_day=True)
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="20_day_next")
 
-select = range(24)
-features = X_test.iloc[select]
-features_display = X.loc[features.index]
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-03 00:00:00',
+                                                            exogenous=True,
+                                                            next_day=True)
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="20_day_next_exo")
 
-with warnings.catch_warnings():
-    warnings.simplefilter("ignore")
-    shap_values = explainer.shap_values(features)[1]
-    shap_interaction_values = explainer.shap_interaction_values(features)
-if isinstance(shap_interaction_values, list):
-    shap_interaction_values = shap_interaction_values[1]
-
-
-shap.decision_plot(explainer.expected_value, shap_values, X)
-print(y_test[0:24])
-print(predictions[0:24])"""
-
-
+    end = time.time()
+    print(f'Seconds: {end - start}')
