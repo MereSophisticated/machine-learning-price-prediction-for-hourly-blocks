@@ -534,7 +534,7 @@ def Orbit_model(date="2021-11-11 00:00:00", X=30, y=2, sez_DLT = [], sez_ETS = [
 
 # Gets data for one day 
     
-def plottt(date="2022-02-10", X=30, y=2):
+def Orbit_prediction_one_day(date="2022-02-10", X=30, y=2):
     ##########DLT
     napaka_DLT = 0
     stevilo_nanov_DLT = 0
@@ -652,8 +652,8 @@ def plottt_only_one_model(date="2021-11-11", X=30, y=2):
 
 
 
-
-def plot_plot(date="2021-11-11", number_of_days=2, X=30, y=2):
+# Orbit prediction for number of days in question
+def Orbit_prediction_days(date="2021-11-11", number_of_days=2, X=30, y=2):
     dates = pd.date_range(start=date, periods=number_of_days)
     sez2 = []
 
@@ -682,11 +682,7 @@ def plot_plot(date="2021-11-11", number_of_days=2, X=30, y=2):
 
         stevilo_nanov_ETS += procenti_stevila[6]
         
-        # stevec_bad += stevec
-        # stevec_pred_good += stevec_pred
 
-        # sez2.append(sez)
-    # delez = stevilo2_2 / dolzina
     dolzina = 24 * number_of_days - stevilo_nanov_ETS
     napaka_abs_all = napaka_ETS / dolzina
 
@@ -705,7 +701,7 @@ def plot_plot(date="2021-11-11", number_of_days=2, X=30, y=2):
     return (napaka_abs_all, in_ten_prct, in_twenty_prct, in_thirty_prct, in_fifty_prct, in_hundred_prct)
 
  
-#   best_interval_X(date="2022-02-10", number_of_days=50, freq=7, start_time=3, end_time=9)
+
 def best_interval_X(date="2021-11-11", number_of_days=50, freq=7, start_time=3, end_time=9):
     ten_prct = []
     twenty_prct = []
@@ -718,7 +714,7 @@ def best_interval_X(date="2021-11-11", number_of_days=50, freq=7, start_time=3, 
     stevec_pred_good = 0
 
     for i in np.linspace(start_time, end_time, freq):
-        napaka_abs_all, in_ten_prct, in_twenty_prct, in_thirty_prct, in_fifty_prct, in_hundred_prct = plot_plot(
+        napaka_abs_all, in_ten_prct, in_twenty_prct, in_thirty_prct, in_fifty_prct, in_hundred_prct = Orbit_prediction_days(
                                                                                         date, number_of_days, X=i, y=2)
         f = open("src/data_analysis/Generated_data/Information_about_orbit_februar_50.txt", "a+")
         f.write(
@@ -731,8 +727,6 @@ def best_interval_X(date="2021-11-11", number_of_days=50, freq=7, start_time=3, 
         fifty_prct.append(in_fifty_prct)
         hundred_prct.append(in_hundred_prct)
         napaka_abs_all_sez.append(napaka_abs_all)
-
-
 
     f = open("src/data_analysis/Generated_data/Information_about_orbit_februar_50.txt", "a+")
     f.write("\n \n \n Seznam: Absolutna napaka, 10%, 20%, 30%, 50%, 100%")
@@ -753,7 +747,7 @@ def best_interval_Y(date="2021-11-10", number_of_days=50, freq=8, start_time=0.5
     stevec_pred_good = 0
 
     for y in np.linspace(start_time, end_time, freq):
-        napaka_abs_all, in_ten_prct, in_twenty_prct, in_thirty_prct, in_fifty_prct, in_hundred_prct  = plot_plot(date, number_of_days, X , y)
+        napaka_abs_all, in_ten_prct, in_twenty_prct, in_thirty_prct, in_fifty_prct, in_hundred_prct  = Orbit_prediction_days(date, number_of_days, X , y)
         f = open("src/data_analysis/Generated_data/Information_about_orbit_Y_50.txt", "a+")
         f.write(
             f"\n \n Začetni datum {date}, Y = {y}, in za koliko dni je narejena analiza {number_of_days} \n Kolikšna je povprečna napaka {napaka_abs_all} \n Postopoma v intervalih: \n 10 procentni absolutni interval {in_ten_prct}  \n 20 procentni absolutni interval {in_twenty_prct} \n 30 procentni absolutni interval {in_thirty_prct}  \n 50 procentni interval {in_fifty_prct}  \n 100 procentni interval {in_hundred_prct}")
