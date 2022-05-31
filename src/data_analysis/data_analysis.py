@@ -12,7 +12,8 @@ from statsmodels.tsa.stattools import grangercausalitytests
 
 from data_retrieval import get_wind_forecast, \
     get_transformed_day_ahead, get_intra_day_min_max_mean, get_diff, get_pct_change_dataframe, get_intra_day_by_hours, \
-    get_wind, get_solar, get_residual_load, get_wind_diff, get_solar_diff, get_residual_load_diff
+    get_wind, get_solar, get_residual_load, get_wind_diff, get_solar_diff, get_residual_load_diff, \
+    get_wind_deltas_previous_24h, get_solar_deltas_previous_24h, get_residual_deltas_previous_24h
 
 plot_path = "plots"
 csv_path = "csv"
@@ -25,7 +26,8 @@ def plot_price_at_given_time(start_date='2021-11-09',
     :param start_date: start date of plot (x-axis)
     :param end_date: end date of plot (x-axis)
     """
-    df_intra_day = get_intra_day_min_max_mean(start_date=start_date, end_date=end_date)
+    df_intra_day = get_intra_day_min_max_mean(start_date=start_date, end_date=end_date, interval='H')
+    print(df_intra_day)
 
     ax = df_intra_day.plot(x='trd_execution_time', y='trd_price_mean')
     plt.fill_between(df_intra_day['trd_execution_time'].dt.to_pydatetime(),
@@ -36,10 +38,9 @@ def plot_price_at_given_time(start_date='2021-11-09',
     df_day_ahead = get_transformed_day_ahead(start_date=start_date, end_date=end_date)
     df_day_ahead.plot(x='trd_delivery_time_start', y='trd_price', use_index=True, ax=ax)
 
-    ax.legend(["Intra-day average", "Min/Max Intra-day", "Day-ahead"])
-    ax.set_title("Price at given time")
-    ax.set_xlabel("Time")
-    ax.set_ylabel("Price")
+    ax.legend(["Povprečje znotraj dnevnega trga", "Min/max znotraj dnevnega trga", "Dnevni trg"])
+    ax.set_xlabel("Čas")
+    ax.set_ylabel("Cena")
     plt.tight_layout()
     plt.savefig(f'{plot_path}/price_at_given_time_{start_date}-{end_date}.png')
 
@@ -84,13 +85,9 @@ def plot_average_price_of_product(max_time_before_closing=None,
     df_day_ahead = get_transformed_day_ahead(start_date=start_date, end_date=end_date)
     df_day_ahead.plot(x='trd_delivery_time_start', y='trd_price', use_index=True, ax=ax)
 
-    ax.legend(["Intra-day average", "Min/Max Intra-day", "Day-ahead"])
-    if max_time_before_closing:
-        ax.set_title(f"Average price of product {max_time_before_closing} {unit} before closing")
-    else:
-        ax.set_title("Average price of product")
-    ax.set_xlabel("Product start time")
-    ax.set_ylabel("Price")
+    ax.legend(["Povprečje znotraj dnevnega trga", "Min/max znotraj dnevnega trga", "Dnevni trg"])
+    ax.set_xlabel("Čas začetka produkta")
+    ax.set_ylabel("Cena")
     plt.tight_layout()
     plt.savefig(f'{plot_path}/average_price_{start_date}-{end_date}'
                 f'-m{min_time_before_closing}-M{max_time_before_closing}-{unit}.png')
@@ -181,8 +178,13 @@ def get_day_ahead_as_intra_day_prediction_accuracy(box_plot=False,
     # var and std by hour of day
     if percentage:
         times = pd.to_datetime(df['trd_delivery_time_start'])
-        return df.groupby(times.dt.hour)[column].agg(['var', 'std']).rename(index={'trd_delivery_time_start': 'hour'})
-    return df.groupby(df.index.hour)[column].agg(['var', 'std']).rename(index={'trd_delivery_time_start': 'hour'})
+        df = df.groupby(times.dt.hour)[column].agg(['var', 'std']).rename(index={'trd_delivery_time_start': 'hour'})
+    else:
+        df = df.groupby(df.index.hour)[column].agg(['var', 'std']).rename(index={'trd_delivery_time_start': 'hour'})
+    ax = df.plot(kind='bar', y='std')
+    ax.set(xlabel="Ura", ylabel='Razlika med ceno na dnevnem in znotraj dnevnem trgu')
+    plt.savefig(f'{plot_path}/hour_dist.png')
+    return df
 
 
 def get_increase_decrease(start_date='2021-11-09',
@@ -248,14 +250,10 @@ def get_wind_correlation(time,
     df_wind['wind_mean'] = df_wind.iloc[:, 1:12].mean(axis=1)
     df_wind.rename(columns={"timestamp": "trd_delivery_time_start"}, inplace=True)
 
-    # TODO: Might make sense to group by interval of 12 hours,
-    #  currently you're looking at forecast at 0 for 12 and price at 0, get pct change gonna need more params
-    # df = df_wind.merge(get_pct_change_dataframe(start_date, end_date), on='trd_delivery_time_start')
     df = df_wind.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date), on='trd_delivery_time_start')
     df.dropna(inplace=True)
     pd.set_option('display.expand_frame_repr', False)
 
-    # print(f"Correlation between forecast wind data at hour {time} for 12 hours ahead and price change:")
     return df[df.columns[1:14]].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
 
 
@@ -272,7 +270,16 @@ def get_wind_diff_correlation(start_date='2021-11-09',
     df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
                   left_index=True, right_index=True)
 
-    return df[['ec00_delta', 'gfs00_delta', 'icon00_delta']].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
+    return df[['ec00_delta_wnd', 'gfs00_delta_wnd', 'icon00_delta_wnd']]. \
+        apply(lambda x: x.corr(df['price_diff'], method='pearson'))
+
+
+def get_wind_deltas_correlation(start_date='2021-11-09',
+                                end_date='2022-03-23'):
+    df = get_wind_deltas_previous_24h(start_date=start_date, end_date=end_date)
+    df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
+                  left_index=True, right_index=True)
+    return df.corr(method='pearson')
 
 
 def get_solar_diff_correlation(start_date='2021-11-09',
@@ -288,7 +295,16 @@ def get_solar_diff_correlation(start_date='2021-11-09',
     df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
                   left_index=True, right_index=True)
 
-    return df[['ec00_delta', 'gfs00_delta']].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
+    return df[['ec00_delta_spv', 'gfs00_delta_spv', 'icon00_delta_spv']]. \
+        apply(lambda x: x.corr(df['price_diff'], method='pearson'))
+
+
+def get_solar_deltas_correlation(start_date='2021-11-09',
+                                 end_date='2022-03-23'):
+    df = get_solar_deltas_previous_24h(start_date=start_date, end_date=end_date)
+    df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
+                  left_index=True, right_index=True)
+    return df.corr(method='pearson')
 
 
 def get_residual_load_diff_correlation(start_date='2021-11-09',
@@ -304,7 +320,16 @@ def get_residual_load_diff_correlation(start_date='2021-11-09',
     df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
                   left_index=True, right_index=True)
 
-    return df[['ec00_delta', 'gfs00_delta']].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
+    return df[['ec00_delta_rdl', 'gfs00_delta_rdl']].apply(lambda x: x.corr(df['price_diff'], method='pearson'))
+
+
+def get_residual_load_deltas_correlation(start_date='2021-11-09',
+                                         end_date='2022-03-23'):
+    df = get_residual_deltas_previous_24h(start_date=start_date, end_date=end_date)
+    df = df.merge(get_diff(absolute=False, start_date=start_date, end_date=end_date),
+                  left_index=True, right_index=True)
+
+    return df.corr(method='pearson')
 
 
 def plot_seasonality():
@@ -373,16 +398,25 @@ def plot_std_of_diff_by_day(max_time_before_closing=None,
                             unit=None):
     """
     Plots standard deviation between intra-day and day-ahead prices
+    :param max_time_before_closing: only trades after maximum till product closes
+    :param min_time_before_closing: only trades before minimum time till product closes
     """
 
     def plot_df(df):
         df = df.groupby(df.index.day_name())['price_diff'].agg(['var', 'std'])
         df.rename(index={'trd_delivery_time_start': 'hour'})
+        print(df)
         cats = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
         df['Day'] = pd.Categorical(df.index, categories=cats, ordered=True)
         df = df.sort_values('Day')
         df = df.set_index('Day').reindex(cats)
+        print(df)
         df['std'].plot(kind="bar")
+        bars = ['Ponedeljek', 'Torek', 'Sreda', 'Četrtek', 'Petek', 'Sobota', 'Nedelja']
+        y_pos = np.arange(len(bars))
+        plt.xticks(y_pos, bars)
+        plt.xlabel(None)
+        plt.ylabel('Razlika med ceno na dnevnem in znotraj dnevnem trgu')
         plt.tight_layout()
         plt.savefig(f'{plot_path}/std_of_diff_by_day.png')
 
@@ -443,7 +477,7 @@ def get_grangers_causation_matrix(data, variables, test='ssr_chi2test', verbose=
 
 
 if __name__ == "__main__":
-    """ plot_price_at_given_time()
+    plot_price_at_given_time()
     plot_average_price_of_product()
     plot_average_price_of_product(max_time_before_closing=30, unit='minutes')
     plot_average_price_of_product(max_time_before_closing=1, unit='hours')
@@ -462,10 +496,39 @@ if __name__ == "__main__":
     plot_diff()
     plot_std_of_diff_by_day()
     df_granger_causation_matrix = granger_causality()
-    df_granger_causation_matrix.to_csv(f'{csv_path}/granger_causality.csv')"""
+    df_granger_causation_matrix.to_csv(f'{csv_path}/granger_causality.csv')
     df_wind_diff_corr = get_wind_diff_correlation()
     df_wind_diff_corr.to_csv(f'{csv_path}/wind_diff_corr.csv')
     df_solar_diff_corr = get_solar_diff_correlation()
     df_solar_diff_corr.to_csv(f'{csv_path}/solar_diff_corr.csv')
     df_residual_diff_corr = get_residual_load_diff_correlation()
     df_residual_diff_corr.to_csv(f'{csv_path}/residual_diff_corr.csv')
+    df_corr_wind_deltas = get_wind_deltas_correlation()
+    plt.figure(figsize=(5, 20))
+    ax = sns.heatmap(
+        df_corr_wind_deltas[['price_diff']].drop('price_diff').sort_values(by=['price_diff'],
+                                                                           ascending=False, key=abs),
+        annot=True, cmap=sns.diverging_palette(240, 10, as_cmap=True), fmt='.2g', center=0)
+    plt.title("Wind")
+    plt.tight_layout()
+    plt.save(f'{plot_path}/residual_deltas.png')
+
+    df_corr_solar_deltas = get_solar_deltas_correlation()
+    plt.figure(figsize=(5, 20))
+    ax = sns.heatmap(
+        df_corr_solar_deltas[['price_diff']].drop('price_diff').sort_values(by=['price_diff'],
+                                                                            ascending=False, key=abs),
+        annot=True, cmap=sns.diverging_palette(240, 10, as_cmap=True), fmt='.2g', center=0)
+    plt.title("Solar")
+    plt.tight_layout()
+    plt.save(f'{plot_path}/solar_deltas.png')
+
+    df_corr_residual_deltas = get_residual_load_deltas_correlation()
+    plt.figure(figsize=(5, 20))
+    ax = sns.heatmap(
+        df_corr_residual_deltas[['price_diff']].drop('price_diff').sort_values(by=['price_diff'],
+                                                                               ascending=False, key=abs),
+        annot=True, cmap=sns.diverging_palette(240, 10, as_cmap=True), fmt='.2g', center=0)
+    plt.title("Residual")
+    plt.tight_layout()
+    plt.save(f'{plot_path}/residual_deltas.png')
