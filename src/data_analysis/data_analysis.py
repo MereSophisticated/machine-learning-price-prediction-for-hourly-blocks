@@ -463,9 +463,10 @@ if __name__ == "__main__":
     plot_std_of_diff_by_day()
     df_granger_causation_matrix = granger_causality()
     df_granger_causation_matrix.to_csv(f'{csv_path}/granger_causality.csv')"""
-    df_wind_diff_corr = get_wind_diff_correlation()
-    df_wind_diff_corr.to_csv(f'{csv_path}/wind_diff_corr.csv')
-    df_solar_diff_corr = get_solar_diff_correlation()
-    df_solar_diff_corr.to_csv(f'{csv_path}/solar_diff_corr.csv')
-    df_residual_diff_corr = get_residual_load_diff_correlation()
-    df_residual_diff_corr.to_csv(f'{csv_path}/residual_diff_corr.csv')
+    # df_wind_diff_corr = get_wind_diff_correlation()
+    # df_wind_diff_corr.to_csv(f'{csv_path}/wind_diff_corr.csv')
+    # df_solar_diff_corr = get_solar_diff_correlation()
+    # df_solar_diff_corr.to_csv(f'{csv_path}/solar_diff_corr.csv')
+    # df_residual_diff_corr = get_residual_load_diff_correlation()
+    # df_residual_diff_corr.to_csv(f'{csv_path}/residual_diff_corr.csv')
+    pass

@@ -92,5 +92,3 @@
  100 procentni interval 0.9583333333333334
  
  
- Seznam: Absolutna napaka, fb prophet, 10%, 20%, 30%, 50%, 100%
- Seznam = [[],[],[],[],[],[],[]]

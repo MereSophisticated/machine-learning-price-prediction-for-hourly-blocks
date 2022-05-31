@@ -9,7 +9,7 @@ from pathlib import Path
 from scipy.stats import linregress
 import datetime as dt
 
-from utils import PROJECT_ROOT
+PROJECT_ROOT = "/Users/janzaloznik/Desktop/Faks/magisterij/1.letnik/GEN-I/machine-learning-price-prediction-for-hourly-blocks"
 
 # Global intra day and day ahead dataframes for functions to use
 files = ['trds_1.parquet',
@@ -21,7 +21,7 @@ files = ['trds_1.parquet',
          ]
 tables = []
 for file in files:
-    tables.append(pq.read_table(f'{PROJECT_ROOT}\\data\\{file}',
+    tables.append(pq.read_table(f'{PROJECT_ROOT}/data/{file}',
                                 columns=['trd_trade_id', 'trd_execution_time', 'trd_venue',
                                          'trd_buy_delivery_area', 'trd_sell_delivery_area',
                                          'trd_tariff',
@@ -32,20 +32,20 @@ table = pa.concat_tables(tables)
 df_intra_day = table.to_pandas()
 df_intra_day = df_intra_day.sort_values(by=['trd_execution_time', 'trd_buy_delivery_area', 'trd_sell_delivery_area'])
 
-df_day_ahead = pd.read_csv(f'{PROJECT_ROOT}\\data\\DE_DA_prices.csv',
+df_day_ahead = pd.read_csv(f'{PROJECT_ROOT}/data/DE_DA_prices.csv',
                            converters={'timestamp': lambda t: pd.Timestamp(t).timestamp()})
 
 # Global wind dataframes for functions to use
-df_wind_historic = pd.read_csv(f'{PROJECT_ROOT}\\data\\wind_data_average.csv')
-df_wind_forecast = pd.read_csv(f'{PROJECT_ROOT}\\data\\forecast_wind_data_average.csv')
+df_wind_historic = pd.read_csv(f'{PROJECT_ROOT}/data/wind_data_average.csv')
+df_wind_forecast = pd.read_csv(f'{PROJECT_ROOT}/data/forecast_wind_data_average.csv')
 
-df_wind = pd.read_csv(f'{PROJECT_ROOT}\\data\\pro_de_wnd_actual_ec00_gfs00_icon00_cet_min15_f.csv', index_col=[0])
+df_wind = pd.read_csv(f'{PROJECT_ROOT}/data/pro_de_wnd_actual_ec00_gfs00_icon00_cet_min15_f.csv', index_col=[0])
 df_wind.index = pd.to_datetime(df_wind.index.astype(str).str[:-6])
 
-df_residual_load = pd.read_csv(f'{PROJECT_ROOT}\\data\\rdl_de_actual_ec00_gfs00_cet_min15_f.csv', index_col=[0])
+df_residual_load = pd.read_csv(f'{PROJECT_ROOT}/data/rdl_de_actual_ec00_gfs00_cet_min15_f.csv', index_col=[0])
 df_residual_load.index = pd.to_datetime(df_residual_load.index.astype(str).str[:-6])
 
-df_solar = pd.read_csv(f'{PROJECT_ROOT}\\data\\pro_de_spv_actual_ec00_gfs00_icon00_cet_min15_f.csv', index_col=[0])
+df_solar = pd.read_csv(f'{PROJECT_ROOT}/data/pro_de_spv_actual_ec00_gfs00_icon00_cet_min15_f.csv', index_col=[0])
 df_solar.index = pd.to_datetime(df_solar.index.astype(str).str[:-6])
 
 
@@ -650,3 +650,7 @@ if __name__ == "__main__":
     print(get_wind())
     print(get_solar())
     print(get_residual_load())
+
+
+
+# get_intra_day_min_max_mean(interval='15min', on='trd_execution_time', max_time_before_closing=2, min_time_before_closing=0, unit="H", start_date="2021-11-10", end_date="2021-11-11")

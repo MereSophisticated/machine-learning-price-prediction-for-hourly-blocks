@@ -1,0 +1,55 @@
+
+ 
+ Začetni datum 2022-02-10, X = 3.0, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 40.559493255013926 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.35672020287404904  
+ 20 procentni absolutni interval 0.5950972104818258 
+ 30 procentni absolutni interval 0.738799661876585  
+ 50 procentni interval 0.8698224852071006  
+ 100 procentni interval 0.959425190194421
+ 
+ Začetni datum 2022-02-10, X = 4.0, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 40.575588803434506 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.35383319292333615  
+ 20 procentni absolutni interval 0.5922493681550126 
+ 30 procentni absolutni interval 0.7430497051390059  
+ 50 procentni interval 0.8685762426284751  
+ 100 procentni interval 0.9612468407750632
+ 
+ Začetni datum 2022-02-10, X = 5.0, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 40.26557984708852 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.35576114381833474  
+ 20 procentni absolutni interval 0.5962994112699748 
+ 30 procentni absolutni interval 0.7401177460050462  
+ 50 procentni interval 0.8696383515559294  
+ 100 procentni interval 0.95878889823381
+ 
+ Začetni datum 2022-02-10, X = 6.0, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 39.97952822127603 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.3546218487394958  
+ 20 procentni absolutni interval 0.5991596638655462 
+ 30 procentni absolutni interval 0.7394957983193278  
+ 50 procentni interval 0.8638655462184874  
+ 100 procentni interval 0.957983193277311
+ 
+ Začetni datum 2022-02-10, X = 7.0, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 40.04594602860183 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.3518052057094878  
+ 20 procentni absolutni interval 0.5961376994122586 
+ 30 procentni absolutni interval 0.7413937867338372  
+ 50 procentni interval 0.8664987405541562  
+ 100 procentni interval 0.9580184718723762
+ 
+ Začetni datum 2022-02-10, X = 8.0, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 40.22904402166987 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.35318791946308725  
+ 20 procentni absolutni interval 0.5973154362416108 
+ 30 procentni absolutni interval 0.7441275167785235  
+ 50 procentni interval 0.8699664429530202  
+ 100 procentni interval 0.9588926174496645
