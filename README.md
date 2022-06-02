@@ -7,12 +7,11 @@ V tem projektu smo za napoved gibanja cen posameznih urnih blokov elektrike znot
 uporabili metode strojnega učenja s pomočjo tako preteklih podatkov znotraj dnevnega trga, 
 kot podatke dnevnega trga elektrike, preostale obremenitve omrežja in veterno ter sončno energijo.
 
-## Getting Started
-
 
 
 ## Avtorja
 Mai Praskalo
+
 Jan Založnik
 
 ## Mentor
