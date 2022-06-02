@@ -308,23 +308,6 @@ S pomočjo Proheta sva prav tako poskušala napovedati zadnje vrednosti urnih bl
 Ker si želiva tudi praktično koristnost najinih metod, sva se bo metoda učila na preteklih podatkih do dve uri pred koncem trgovanja za posamezni urni blok. Tako nam še ostane dovolj časa da na trg vstopimo z kratko oziroma dolgo pozicijo.
 Ker bi bilo možno, da zelo oddaljeni podatki o trgovanju za določen urni blok vplivajo negativno na napoved, sva naredila tudi to primerjavo \ref{table:februar_war} in \ref{table:november_normal}. % Še sliko da nardim da se vidi 
 
-\begin{table}[]
-    \resizebox{\columnwidth}{!}{%
-    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
-    \hline
-    Urni zamiki (X-2)           & 3     & 3,5   & 4     & 4,5   & 5     & 5,5   & 6     & 6,5   & 7     & 7,5   & 8     & 8,5   & 9     & 30    \\ \hline
-    Absolutna napaka            & 76,28 & 71,45 & 67,14 & 64,80 & 62,62 & 61,71 & 60,67 & 59,79 & 59,06 & 58,27 & 57,72 & 57,23 & 56,56 & 50,86 \\ \hline
-    Prophet interval (\%)       & 85,94 & 81,68 & 76,05 & 72,37 & 67,67 & 62,08 & 57,29 & 53,85 & 49,79 & 47,52 & 42,79 & 40,45 & 37,77 & 16,84 \\ \hline
-    10 procentni interval(\%)   & 19,78 & 20,25 & 21,59 & 21,74 & 22,67 & 22,90 & 23,32 & 23,82 & 23,64 & 25,23 & 25,62 & 25,71 & 25,96 & 27,27 \\ \hline
-    20 procentni interval (\%)  & 36,53 & 38,65 & 40,00 & 41,39 & 41,39 & 41,19 & 41,94 & 43,12 & 43,67 & 44,34 & 45,22 & 45,81 & 45,64 & 49,95 \\ \hline
-    30 procentni interval (\%)  & 50,84 & 52,43 & 53,27 & 55,41 & 57,09 & 57,38 & 57,88 & 58,55 & 59,26 & 59,68 & 59,29 & 59,71 & 59,88 & 63,55 \\ \hline
-    50 procentni interval (\%)  & 67,42 & 69,41 & 71,51 & 72,23 & 72,37 & 73,55 & 73,23 & 73,32 & 73,57 & 74,26 & 74,60 & 74,70 & 74,95 & 78,56 \\ \hline
-    100 procentni interval (\%) & 83,33 & 83,86 & 85,71 & 86,56 & 87,49 & 87,91 & 88,42 & 88,67 & 88,51 & 88,85 & 89,19 & 89,02 & 89,27 & 90,90 \\ \hline
-    \end{tabular}%
-    }
-    \caption{Tabela povprečij posameznih intervalov za 50 dni od 10. februarja 2022}
-    \label{table:februar_war}
-\end{table}
 
 
 \begin{table}[]
@@ -345,15 +328,257 @@ Ker bi bilo možno, da zelo oddaljeni podatki o trgovanju za določen urni blok 
     \label{table:november_normal}
 \end{table}
 
+
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (X-2)           & 3     & 3,5   & 4     & 4,5   & 5     & 5,5   & 6     & 6,5   & 7     & 7,5   & 8     & 8,5   & 9     & 30    \\ \hline
+    Absolutna napaka            & 76,28 & 71,45 & 67,14 & 64,80 & 62,62 & 61,71 & 60,67 & 59,79 & 59,06 & 58,27 & 57,72 & 57,23 & 56,56 & 50,86 \\ \hline
+    Prophet interval (\%)       & 85,94 & 81,68 & 76,05 & 72,37 & 67,67 & 62,08 & 57,29 & 53,85 & 49,79 & 47,52 & 42,79 & 40,45 & 37,77 & 16,84 \\ \hline
+    10 procentni interval(\%)   & 19,78 & 20,25 & 21,59 & 21,74 & 22,67 & 22,90 & 23,32 & 23,82 & 23,64 & 25,23 & 25,62 & 25,71 & 25,96 & 27,27 \\ \hline
+    20 procentni interval (\%)  & 36,53 & 38,65 & 40,00 & 41,39 & 41,39 & 41,19 & 41,94 & 43,12 & 43,67 & 44,34 & 45,22 & 45,81 & 45,64 & 49,95 \\ \hline
+    30 procentni interval (\%)  & 50,84 & 52,43 & 53,27 & 55,41 & 57,09 & 57,38 & 57,88 & 58,55 & 59,26 & 59,68 & 59,29 & 59,71 & 59,88 & 63,55 \\ \hline
+    50 procentni interval (\%)  & 67,42 & 69,41 & 71,51 & 72,23 & 72,37 & 73,55 & 73,23 & 73,32 & 73,57 & 74,26 & 74,60 & 74,70 & 74,95 & 78,56 \\ \hline
+    100 procentni interval (\%) & 83,33 & 83,86 & 85,71 & 86,56 & 87,49 & 87,91 & 88,42 & 88,67 & 88,51 & 88,85 & 89,19 & 89,02 & 89,27 & 90,90 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih intervalov za 50 dni od 10. februarja 2022}
+    \label{table:februar_war}
+\end{table}
+
+
+
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (V smeri napovedi)   & 0,5     & 1     & 1,5     & 2     & 2,5     & 3     & 3,5     & 4    \\ \hline
+    Absolutna napaka            & 43,28 & 40,07 & 49,43 & 49,88 & 57,72 & 52,68 & 60,13 & 57,03 \\ \hline
+    Prophet interval (\%)       & 13,25 & 15,83 & 21,08 & 24,41 & 23,91 & 28,25 & 27,75 & 31,66 \\ \hline
+    10 procentni interval(\%)   & 38,41 & 37,41 & 33,00 & 29,25 & 26,66 & 25,41 & 26,33 & 27,50 \\ \hline
+    20 procentni interval (\%)  & 61,58 & 61,91 & 54,75 & 55,00 & 49,00 & 51,41 & 46,91 & 49,58 \\ \hline
+    30 procentni interval (\%)  & 75,25 & 75,75 & 69,91 & 69,91 & 65,16 & 67,41 & 63,33 & 66,25 \\ \hline
+    50 procentni interval (\%)  & 88,58 & 90,08 & 86,16 & 80,75 & 83,91 & 81,50 & 83,16 & 80,50 \\ \hline
+    100 procentni interval (\%) & 95,08 & 97,33 & 95,33 & 95,00 & 93,58 & 94,16 & 92,75 & 93,66 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih napovednih intervalov za 50 dni od 10. novembra 2021(Prophet)}
+    \label{table:november_normal_y}
+\end{table}
+
+
 \subsection{Orbit}
 
 Orbit je prav tako model za napovedovanje vrednosti časovnih vrst, kjer je mogoče z dodajanjem različnih informacij možno vplivati na izboljšavo napovedi. Tega prej omenjena modela ne zmoreta.
+Podobno kot pri Arimi in Prophetu, naju je zanimala natančnost napovedanih vrednosti, če spreminjamo množico zgodovinskih podatkov. Ponovno sva analizo naredila na manj stabilnih podatkih (\ref{table:feb_war_orbit}) in na bolj predvidljivih (\ref{table:nov_normal_orbit}).
+
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (X-2)           & 3     & 4     & 5     & 6     & 7     & 8     & 9     & 30    \\ \hline
+    Absolutna napaka            & 34,88 & 34,97 & 34,67 & 34,32 & 34,41 & 34,82 & 34,43 & 37,41 \\ \hline
+    10 procentni interval(\%)   & 40,00 & 39.02 & 40,13 & 40,41 & 39,16 & 40,27 & 39,58 & 40,20 \\ \hline
+    20 procentni interval (\%)  & 65,41 & 65,27 & 65,55 & 65,69 & 65,55 & 65,83 & 65,97 & 65,16 \\ \hline
+    30 procentni interval (\%)  & 80,55 & 80,41 & 80,41 & 80,41 & 80,41 & 80,27 & 78,66 & 79,41 \\ \hline
+    50 procentni interval (\%)  & 92,63 & 92,77 & 92,77 & 92,63 & 92,63 & 92,77 & 92,63 & 92,25 \\ \hline
+    100 procentni interval (\%) & 98,88 & 98,75 & 98,88 & 98,33 & 98,47 & 98,61 & 98,33 & 98,58 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih intervalov za 50 dni od 10. novembra 2021}
+    \label{table:nov_normal_orbit}
+\end{table}
 
 
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (X-2)           & 3     & 4     & 5     & 6     & 7     & 8     & 9     & 30    \\ \hline
+    Absolutna napaka            & 40,55 & 40,57 & 40,26 & 39,97 & 40,04 & 40,22 & 40,12 & 38,12 \\ \hline
+    10 procentni interval(\%)   & 35,67 & 35,38 & 35,57 & 35,46 & 35,18 & 35,31 & 35,91 & 38,91 \\ \hline
+    20 procentni interval (\%)  & 59,50 & 59,22 & 59,62 & 59,91 & 59,61 & 59,73 & 57,91 & 56,91 \\ \hline
+    30 procentni interval (\%)  & 73,87 & 74,30 & 74,01 & 73,94 & 74,13 & 74,41 & 78,12 & 77,12 \\ \hline
+    50 procentni interval (\%)  & 86,98 & 86,85 & 86,96 & 86,38 & 86,64 & 86,99 & 87,19 & 88,19 \\ \hline
+    100 procentni interval (\%) & 95,94 & 96,12 & 95,87 & 95,79 & 95,80 & 95,88 & 96,08 & 97,08 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih intervalov za 50 dni od 10. februarja 2022}
+    \label{table:feb_war_orbit}
+\end{table}
+
+
+Nato naju je zanimala še analiza napovednih intervalov, torej časovnih intervalov med katerimi bi lahko potem v prihodnosti na borzi še trgovali.
+
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (V smeri napovedi)   & 0,5     & 1     & 1,5     & 2     & 2,5     & 3     & 3,5     & 4    \\ \hline
+    Absolutna napaka            & 27,95 & 34,75 & 36,40 & 37,79 & 38,65 & 40,27 & 41,05 & 41,70 \\ \hline
+    10 procentni interval(\%)   & 51,08 & 42,33 & 41,16 & 39,75 & 37,08 & 37,58 & 36,66 & 36,75 \\ \hline
+    20 procentni interval (\%)  & 76,16 & 68,08 & 65,91 & 65,75 & 64,33 & 62,66 & 62,66 & 62,00 \\ \hline
+    30 procentni interval (\%)  & 87,41 & 82,16 & 81,25 & 79,41 & 79,00 & 78,16 & 77,75 & 77,83 \\ \hline
+    50 procentni interval (\%)  & 95,58 & 93,16 & 92,91 & 93,00 & 92,58 & 92,25 & 91,83 & 91,58 \\ \hline
+    100 procentni interval (\%) & 98,75 & 98,41 & 98,50 & 98,75 & 98,91 & 98,58 & 98,91 & 98,75 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih napovednih intervalov za 50 dni od 10. novembra 2021 (Orbit)}
+    \label{table:november_normal_y_orbit}
+\end{table}
 
 \section{Rezultati}
 
 Rezultate bova dodala po zadnjem sestanku z mentorjem.
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tabele za na konec
+%Arima 
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (X-2)           & 3     & 4     & 5     & 6     & 7     & 8     & 9     & 30    \\ \hline
+    Absolutna napaka            & 34,25 & 34,83 & 37,90 & 35,24 & 35,24 & 35,39 & 35,34 & 48,03 \\ \hline
+    10 procentni interval(\%)   & 40,00 & 40,20 & 38,12 & 38,33 & 37,70 & 37,70 & 37,70 & 30,33 \\ \hline
+    20 procentni interval (\%)  & 66,04 & 65,83 & 65,62 & 65,41 & 65,41 & 65,62 & 65,41 & 55,41 \\ \hline
+    30 procentni interval (\%)  & 83,12 & 82,50 & 82,08 & 82,08 & 82,08 & 82,29 & 82,29 & 71,41 \\ \hline
+    50 procentni interval (\%)  & 95,41 & 95,00 & 94,16 & 94,58 & 94,37 & 94,16 & 94,37 & 86,50 \\ \hline
+    100 procentni interval (\%) & 99,58 & 99,58 & 99,58 & 99,58 & 99,58 & 99,58 & 99,58 & 99,58 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih intervalov za 50 dni od 10. novembra 2021 (SARIMA)}
+    \label{table:november_normal}
+\end{table}
+
+
+
+
+
+
+
+
+
+%Prophet
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (X-2)           & 3     & 4     & 5     & 6     & 7     & 8     & 9     & 30    \\ \hline
+    Absolutna napaka            & 72,18 & 63,21 & 58,87 & 56,24 & 54,66 & 53,80 & 53,15 & 48,03 \\ \hline
+    Prophet interval (\%)       & 91,48 & 86,07 & 78,00 & 70,25 & 60,00 & 51,41 & 45,25 & 19,41 \\ \hline
+    10 procentni interval(\%)   & 22,87 & 24,43 & 26,41 & 27,33 & 28,66 & 28,58 & 28,41 & 30,33 \\ \hline
+    20 procentni interval (\%)  & 40,73 & 45,45 & 47,66 & 48,66 & 49,50 & 50,91 & 51,25 & 55,41 \\ \hline
+    30 procentni interval (\%)  & 56,92 & 59,93 & 63,50 & 65,33 & 65,91 & 66,41 & 67,16 & 71,41 \\ \hline
+    50 procentni interval (\%)  & 74,95 & 80,06 & 82,50 & 83,25 & 83,33 & 84,66 & 85,41 & 86,50 \\ \hline
+    100 procentni interval (\%) & 89,14 & 92,57 & 93,08 & 93,58 & 93,83 & 94,75 & 95,08 & 95,83 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih intervalov za 50 dni od 10. novembra 2021}
+    \label{table:november_normal}
+\end{table}
+
+
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (X-2)           & 3     & 3,5   & 4     & 4,5   & 5     & 5,5   & 6     & 6,5   & 7     & 7,5   & 8     & 8,5   & 9     & 30    \\ \hline
+    Absolutna napaka            & 76,28 & 71,45 & 67,14 & 64,80 & 62,62 & 61,71 & 60,67 & 59,79 & 59,06 & 58,27 & 57,72 & 57,23 & 56,56 & 50,86 \\ \hline
+    Prophet interval (\%)       & 85,94 & 81,68 & 76,05 & 72,37 & 67,67 & 62,08 & 57,29 & 53,85 & 49,79 & 47,52 & 42,79 & 40,45 & 37,77 & 16,84 \\ \hline
+    10 procentni interval(\%)   & 19,78 & 20,25 & 21,59 & 21,74 & 22,67 & 22,90 & 23,32 & 23,82 & 23,64 & 25,23 & 25,62 & 25,71 & 25,96 & 27,27 \\ \hline
+    20 procentni interval (\%)  & 36,53 & 38,65 & 40,00 & 41,39 & 41,39 & 41,19 & 41,94 & 43,12 & 43,67 & 44,34 & 45,22 & 45,81 & 45,64 & 49,95 \\ \hline
+    30 procentni interval (\%)  & 50,84 & 52,43 & 53,27 & 55,41 & 57,09 & 57,38 & 57,88 & 58,55 & 59,26 & 59,68 & 59,29 & 59,71 & 59,88 & 63,55 \\ \hline
+    50 procentni interval (\%)  & 67,42 & 69,41 & 71,51 & 72,23 & 72,37 & 73,55 & 73,23 & 73,32 & 73,57 & 74,26 & 74,60 & 74,70 & 74,95 & 78,56 \\ \hline
+    100 procentni interval (\%) & 83,33 & 83,86 & 85,71 & 86,56 & 87,49 & 87,91 & 88,42 & 88,67 & 88,51 & 88,85 & 89,19 & 89,02 & 89,27 & 90,90 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih intervalov za 50 dni od 10. februarja 2022}
+    \label{table:februar_war}
+\end{table}
+
+
+
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (V smeri napovedi)   & 0,5     & 1     & 1,5     & 2     & 2,5     & 3     & 3,5     & 4    \\ \hline
+    Absolutna napaka            & 43,28 & 40,07 & 49,43 & 49,88 & 57,72 & 52,68 & 60,13 & 57,03 \\ \hline
+    Prophet interval (\%)       & 13,25 & 15,83 & 21,08 & 24,41 & 23,91 & 28,25 & 27,75 & 31,66 \\ \hline
+    10 procentni interval(\%)   & 38,41 & 37,41 & 33,00 & 29,25 & 26,66 & 25,41 & 26,33 & 27,50 \\ \hline
+    20 procentni interval (\%)  & 61,58 & 61,91 & 54,75 & 55,00 & 49,00 & 51,41 & 46,91 & 49,58 \\ \hline
+    30 procentni interval (\%)  & 75,25 & 75,75 & 69,91 & 69,91 & 65,16 & 67,41 & 63,33 & 66,25 \\ \hline
+    50 procentni interval (\%)  & 88,58 & 90,08 & 86,16 & 80,75 & 83,91 & 81,50 & 83,16 & 80,50 \\ \hline
+    100 procentni interval (\%) & 95,08 & 97,33 & 95,33 & 95,00 & 93,58 & 94,16 & 92,75 & 93,66 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih napovednih intervalov za 50 dni od 10. novembra 2021(Prophet)}
+    \label{table:november_normal_y}
+\end{table}
+
+
+% orbit 
+
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (X-2)           & 3     & 4     & 5     & 6     & 7     & 8     & 9     & 30    \\ \hline
+    Absolutna napaka            & 34,88 & 34,97 & 34,67 & 34,32 & 34,41 & 34,82 & 34,43 & 37,41 \\ \hline
+    10 procentni interval(\%)   & 40,00 & 39.02 & 40,13 & 40,41 & 39,16 & 40,27 & 39,58 & 40,20 \\ \hline
+    20 procentni interval (\%)  & 65,41 & 65,27 & 65,55 & 65,69 & 65,55 & 65,83 & 65,97 & 65,16 \\ \hline
+    30 procentni interval (\%)  & 80,55 & 80,41 & 80,41 & 80,41 & 80,41 & 80,27 & 78,66 & 79,41 \\ \hline
+    50 procentni interval (\%)  & 92,63 & 92,77 & 92,77 & 92,63 & 92,63 & 92,77 & 92,63 & 92,25 \\ \hline
+    100 procentni interval (\%) & 98,88 & 98,75 & 98,88 & 98,33 & 98,47 & 98,61 & 98,33 & 98,58 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih intervalov za 50 dni od 10. novembra 2021}
+    \label{table:nov_normal_orbit}
+\end{table}
+
+
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (X-2)           & 3     & 4     & 5     & 6     & 7     & 8     & 9     & 30    \\ \hline
+    Absolutna napaka            & 40,55 & 40,57 & 40,26 & 39,97 & 40,04 & 40,22 & 40,12 & 38,12 \\ \hline
+    10 procentni interval(\%)   & 35,67 & 35,38 & 35,57 & 35,46 & 35,18 & 35,31 & 35,91 & 38,91 \\ \hline
+    20 procentni interval (\%)  & 59,50 & 59,22 & 59,62 & 59,91 & 59,61 & 59,73 & 57,91 & 56,91 \\ \hline
+    30 procentni interval (\%)  & 73,87 & 74,30 & 74,01 & 73,94 & 74,13 & 74,41 & 78,12 & 77,12 \\ \hline
+    50 procentni interval (\%)  & 86,98 & 86,85 & 86,96 & 86,38 & 86,64 & 86,99 & 87,19 & 88,19 \\ \hline
+    100 procentni interval (\%) & 95,94 & 96,12 & 95,87 & 95,79 & 95,80 & 95,88 & 96,08 & 97,08 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih intervalov za 50 dni od 10. februarja 2022}
+    \label{table:feb_war_orbit}
+\end{table}
+
+
+\begin{table}[]
+    \resizebox{\columnwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Urni zamiki (V smeri napovedi)   & 0,5     & 1     & 1,5     & 2     & 2,5     & 3     & 3,5     & 4    \\ \hline
+    Absolutna napaka            & 27,95 & 34,75 & 36,40 & 37,79 & 38,65 & 40,27 & 41,05 & 41,70 \\ \hline
+    10 procentni interval(\%)   & 51,08 & 42,33 & 41,16 & 39,75 & 37,08 & 37,58 & 36,66 & 36,75 \\ \hline
+    20 procentni interval (\%)  & 76,16 & 68,08 & 65,91 & 65,75 & 64,33 & 62,66 & 62,66 & 62,00 \\ \hline
+    30 procentni interval (\%)  & 87,41 & 82,16 & 81,25 & 79,41 & 79,00 & 78,16 & 77,75 & 77,83 \\ \hline
+    50 procentni interval (\%)  & 95,58 & 93,16 & 92,91 & 93,00 & 92,58 & 92,25 & 91,83 & 91,58 \\ \hline
+    100 procentni interval (\%) & 98,75 & 98,41 & 98,50 & 98,75 & 98,91 & 98,58 & 98,91 & 98,75 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabela povprečij posameznih napovednih intervalov za 50 dni od 10. novembra 2021 (Orbit)}
+    \label{table:november_normal_y_orbit}
+\end{table}
 
 
 

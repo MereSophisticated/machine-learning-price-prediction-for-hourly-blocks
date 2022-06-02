@@ -1,0 +1,87 @@
+
+ 
+ Začetni datum 2021-11-10, X = 3.0, in za koliko dni je narejena analiza 20 
+ Kolikšna je povprečna napaka 34.25841656112742 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.4  
+ 20 procentni absolutni interval 0.6604166666666667 
+ 30 procentni absolutni interval 0.83125  
+ 50 procentni interval 0.9541666666666667  
+ 100 procentni interval 0.9958333333333333
+ 
+ Začetni datum 2021-11-10, X = 4.0, in za koliko dni je narejena analiza 20 
+ Kolikšna je povprečna napaka 34.832085982795014 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.40208333333333335  
+ 20 procentni absolutni interval 0.6583333333333333 
+ 30 procentni absolutni interval 0.825  
+ 50 procentni interval 0.95  
+ 100 procentni interval 0.9958333333333333
+ 
+ Začetni datum 2021-11-10, X = 5.0, in za koliko dni je narejena analiza 20 
+ Kolikšna je povprečna napaka 37.90252218242501 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.38125  
+ 20 procentni absolutni interval 0.65625 
+ 30 procentni absolutni interval 0.8208333333333333  
+ 50 procentni interval 0.9416666666666667  
+ 100 procentni interval 0.9958333333333333
+ 
+ Začetni datum 2021-11-10, X = 6.0, in za koliko dni je narejena analiza 20 
+ Kolikšna je povprečna napaka 35.24702901463004 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.38333333333333336  
+ 20 procentni absolutni interval 0.6541666666666667 
+ 30 procentni absolutni interval 0.8208333333333333  
+ 50 procentni interval 0.9458333333333333  
+ 100 procentni interval 0.9958333333333333
+ 
+ Začetni datum 2021-11-10, X = 7.0, in za koliko dni je narejena analiza 20 
+ Kolikšna je povprečna napaka 35.24319805758758 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.3770833333333333  
+ 20 procentni absolutni interval 0.6541666666666667 
+ 30 procentni absolutni interval 0.8208333333333333  
+ 50 procentni interval 0.94375  
+ 100 procentni interval 0.9958333333333333
+ 
+ Začetni datum 2021-11-10, X = 8.0, in za koliko dni je narejena analiza 20 
+ Kolikšna je povprečna napaka 35.39637202876754 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.3770833333333333  
+ 20 procentni absolutni interval 0.65625 
+ 30 procentni absolutni interval 0.8229166666666666  
+ 50 procentni interval 0.9416666666666667  
+ 100 procentni interval 0.9958333333333333
+ 
+ Začetni datum 2021-11-10, X = 9.0, in za koliko dni je narejena analiza 20 
+ Kolikšna je povprečna napaka 35.34861528193223 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.3770833333333333  
+ 20 procentni absolutni interval 0.6541666666666667 
+ 30 procentni absolutni interval 0.8229166666666666  
+ 50 procentni interval 0.94375  
+ 100 procentni interval 0.9958333333333333
+
+
+ Začetni datum 2021-11-10, X = 30.0, in za koliko dni je narejena analiza 20 
+ Kolikšna je povprečna napaka 38.394535663813805 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.3862212943632568  
+ 20 procentni absolutni interval 0.6555323590814196 
+ 30 procentni absolutni interval 0.8329853862212944  
+ 50 procentni interval 0.9394572025052192  
+ 100 procentni interval 0.9937369519832986
+ 
+ 
+ Seznam: Absolutna napaka, 10%, 20%, 30%, 50%, 100%
+ Seznam = [
+     [34.25841656112742, 34.832085982795014, 37.90252218242501, 35.24702901463004, 35.24319805758758, 35.39637202876754, 35.34861528193223, 38.394535663813805],
+     [0.4, 0.40208333333333335, 0.38125, 0.38333333333333336, 0.3770833333333333, 0.3770833333333333, 0.3770833333333333, 0.3862212943632568],
+     [0.6604166666666667, 0.6583333333333333, 0.65625, 0.6541666666666667, 0.6541666666666667, 0.65625, 0.6541666666666667, 0.6555323590814196],
+     [0.83125, 0.825, 0.8208333333333333, 0.8208333333333333, 0.8208333333333333, 0.8229166666666666, 0.8229166666666666, 0.8329853862212944],
+     [0.9541666666666667, 0.95, 0.9416666666666667, 0.9458333333333333, 0.94375, 0.9416666666666667, 0.94375, 0.9394572025052192],
+     [0.9958333333333333, 0.9958333333333333, 0.9958333333333333, 0.9958333333333333, 0.9958333333333333, 0.9958333333333333, 0.9958333333333333, 0.9937369519832986]
+    ]
+ 
+ 
