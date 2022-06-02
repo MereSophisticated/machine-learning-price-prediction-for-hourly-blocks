@@ -558,7 +558,7 @@ def get_grangers_causation_matrix(data, variables, test='ssr_chi2test', verbose=
 
 
 if __name__ == "__main__":
-    """plot_price_at_given_time()
+    plot_price_at_given_time()
     plot_average_price_of_product()
     plot_average_price_of_product(max_time_before_closing=30, unit='minutes')
     plot_average_price_of_product(max_time_before_closing=1, unit='hours')
@@ -613,57 +613,4 @@ if __name__ == "__main__":
         annot=True, cmap=sns.diverging_palette(240, 10, as_cmap=True), fmt='.2g', center=0)
     plt.title("Residual")
     plt.tight_layout()
-    plt.save(f'{plot_path}/residual_deltas.png')"""
-
-
-    def set_size(width, fraction=1):
-        """Set figure dimensions to avoid scaling in LaTeX.
-
-        Parameters
-        ----------
-        width: float
-                Document textwidth or columnwidth in pts
-        fraction: float, optional
-                Fraction of the width which you wish the figure to occupy
-
-        Returns
-        -------
-        fig_dim: tuple
-                Dimensions of figure in inches
-        """
-        # Width of figure (in pts)
-        fig_width_pt = width * fraction
-
-        # Convert from pt to inches
-        inches_per_pt = 1 / 72.27
-
-        # Golden ratio to set aesthetic figure height
-        # https://disq.us/p/2940ij3
-        golden_ratio = (5 ** .5 - 1) / 2
-
-        # Figure width in inches
-        fig_width_in = fig_width_pt * inches_per_pt
-        # Figure height in inches
-        fig_height_in = fig_width_in * golden_ratio
-
-        fig_dim = (fig_width_in, fig_height_in)
-
-        return fig_dim
-
-
-    """ df = granger_causality()
-    mask = np.zeros_like(df, dtype=np.bool)
-    mask[np.triu_indices_from(mask)] = True
-    plt.figure(figsize=(10,5))
-    sns.heatmap(df, mask=mask, cmap="YlGnBu_r", annot=True, fmt='.2f')
-    plt.tight_layout()
-    plt.show()
-    print("DONE")"""
-    # plot_day_ahead_and_intra_day()
-    print("HERE")
-    #plot_correlation()
-    #get_day_ahead_as_intra_day_prediction_accuracy()
-    # get_day_ahead_as_intra_day_prediction_accuracy(percentage=True, remove_outliers=True)
-    #plot_weather_and_residual()
-    plot_seasonality()
-    print("DONE")
+    plt.save(f'{plot_path}/residual_deltas.png')
