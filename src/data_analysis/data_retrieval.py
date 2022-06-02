@@ -606,7 +606,7 @@ def get_labeled_data(simple=False,
 
     else:
         conditions = [
-            # Label 14
+            # Label 13
             ((df['trd_price'] - df_intra_day['trd_price_mean']) > 60),
 
             # Label 13
@@ -617,8 +617,6 @@ def get_labeled_data(simple=False,
             ((df['trd_price'] - df_intra_day['trd_price_mean']) <= 50) &
             ((df['trd_price'] - df_intra_day['trd_price_mean']) > 40),
 
-            # Label 11
-            (df['trd_price'] - df_intra_day['trd_price_mean']) > 40,
 
             # Label 10
             ((df['trd_price'] - df_intra_day['trd_price_mean']) <= 40) &
@@ -664,7 +662,7 @@ def get_labeled_data(simple=False,
             (df['trd_price'] - df_intra_day['trd_price_mean']) < -60
         ]
 
-        values = [i for i in range(14, -1, -1)]
+        values = [i for i in range(13, -1, -1)]
     # df['price_diff'] = df['trd_price'] - df_intra_day['trd_price_mean']
     df['label'] = np.select(conditions, values, default='Undefined')
     return df
@@ -674,7 +672,7 @@ def get_train_test_split(base=False,
                          next_day=False,
                          exogenous=False,
                          labeled=False,
-                         simple_labels=True,
+                         simple_labels=False,
                          split_timestamp='2022-03-21 00:00:00',
                          start_date='2021-11-09',
                          end_date='2022-03-22'):
