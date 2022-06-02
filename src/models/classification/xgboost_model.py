@@ -1,9 +1,13 @@
 import time
 
+import numpy as np
+
 import shap
 import xgboost as xgb
 from matplotlib import pyplot as plt
 from sklearn import metrics
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
 from src.data_analysis.data_retrieval import get_train_test_split
 
 plot_path = 'plots'
@@ -29,9 +33,19 @@ def train_and_test_model(X_train, X_test, y_train, y_test, plt_title):
 
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(X_train)
-    shap.summary_plot(shap_values, X_train, plot_type="bar", class_names=y_train.unique(), show=False)
+    plt.figure(figsize=(10, 10))
+    shap.summary_plot(shap_values, X_train, plot_type="bar", class_names=y_train.unique(),
+                      show=False, class_inds=np.argsort(y_train.unique()))
     plt.tight_layout()
     plt.savefig(f'{plot_path}/{plt_title}_imp.png')
+    plt.clf()
+
+    cm = confusion_matrix(y_test, predictions, labels=model.classes_)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm,
+                                  display_labels=model.classes_)
+    disp.plot()
+    plt.title(plt_title)
+    plt.savefig(f'{plot_path}/{plt_title}_conf_matrix.png')
     plt.clf()
     print(50 * "-")
 
@@ -39,6 +53,14 @@ def train_and_test_model(X_train, X_test, y_train, y_test, plt_title):
 if __name__ == "__main__":
     # SIMPLE
     # SINGLE DAY
+    X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-21 00:00:00',
+                                                            exogenous=True,
+                                                            next_day=True,
+                                                            labeled=True,
+                                                            simple_labels=True
+                                                            )
+    train_and_test_model(X_train, X_test, y_train, y_test, plt_title="simple_single_day_next_exo")
+
     start = time.time()
     X_train, X_test, y_train, y_test = get_train_test_split(split_timestamp='2022-03-21 00:00:00',
                                                             base=True,
