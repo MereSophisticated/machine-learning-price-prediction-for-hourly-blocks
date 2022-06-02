@@ -433,12 +433,13 @@ points(d.fit,col="red",type="o",pch=16,cex=0.5)
 #plot first intra_day data
 
 plot(X,plot.type="single",
-     main="",
-     ylab="Price",
+     main="Napoved znotraj dnevnega trenda 24 ur",
+     ylab="Cena",
+     xlab="Čas",
      col=c("black","red"), lwd = 1)
 
 legend("topright",
-       c("Observed","Predicted"),
+       c("Resnični podatki","napoved"),
        col=c("black","red"),
        lty="solid",
        bty="n", lwd = 2)

@@ -1,0 +1,20 @@
+
+
+ 
+ Začetni datum 2021-11-10, Y = 0.5, in za koliko dni je narejena analiza 20 
+ Kolikšna je povprečna napaka 29.06546837047092 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.4968684759916493  
+ 20 procentni absolutni interval 0.7828810020876826 
+ 30 procentni absolutni interval 0.9164926931106472  
+ 50 procentni interval 0.9665970772442589  
+ 100 procentni interval 0.9895615866388309
+ 
+ Začetni datum 2021-11-10, Y = 1.0, in za koliko dni je narejena analiza 20 
+ Kolikšna je povprečna napaka 39.45070652957228 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.407098121085595  
+ 20 procentni absolutni interval 0.6951983298538622 
+ 30 procentni absolutni interval 0.860125260960334  
+ 50 procentni interval 0.9561586638830898  
+ 100 procentni interval 0.9916492693110647

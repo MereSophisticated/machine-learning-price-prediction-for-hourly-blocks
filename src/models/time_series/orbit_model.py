@@ -136,10 +136,10 @@ def Orbit_model_ETS(sez_ETS, time_1="2021-11-11 00:00:00", X=30, y=2):
     # outcomes data frame
     predicted_df = ets.predict(df=test_df)
 
-    plot_predicted_data(
-    training_actual_df=train_df, predicted_df=predicted_df,
-    date_col=ets.date_col, actual_col=ets.response_col,
-    test_actual_df=test_df)
+    # plot_predicted_data(
+    # training_actual_df=train_df, predicted_df=predicted_df,
+    # date_col=ets.date_col, actual_col=ets.response_col,
+    # test_actual_df=test_df)
 
     last_pred_value_ETS = predicted_df.prediction.values[-1]
     last_all_value = all_data.trd_price.values[-1]
@@ -766,3 +766,98 @@ def best_interval_Y(date="2021-11-10", number_of_days=50, freq=8, start_time=0.5
     f.write(
         f"\n Seznam = [{napaka_abs_all_sez},{ten_prct},{twenty_prct},{thirty_prct},{fifty_prct},{hundred_prct}]")
     f.close()
+
+sez_feb_x = [
+     [40.559493255013926, 40.575588803434506,  40.26557984708852, 39.97952822127603, 40.04594602860183, 40.22904402166987, 40.123904402166987, 38.123904402166987],
+     [0.35672020287404904, 0.35383319292333615, 0.35576114381833474, 0.3546218487394958, 0.3518052057094878, 0.35318791946308725, 0.35918791946308725, 0.38918791946308725],
+     [0.5950972104818258, 0.5922493681550126, 0.5962994112699748, 0.5991596638655462, 0.5961376994122586, 0.5973154362416108, 0.579154362416108, 0.569154362416108],
+     [0.738799661876585, 0.7430497051390059, 0.7401177460050462, 0.7394957983193278, 0.7413937867338372, 0.7441275167785235, 0.781275167785235,   0.771275167785235],
+     [0.8698224852071006, 0.8685762426284751,  0.8696383515559294, 0.8638655462184874,  0.8664987405541562, 0.8699664429530202,0.8719664429530202, 0.8819664429530202],
+     [0.959425190194421, 0.9612468407750632,  0.95878889823381, 0.957983193277311,  0.9580184718723762, 0.9588926174496645,  0.9608926174496645, 0.9708926174496645]
+                ]
+
+sez_nov_x = [
+     [34.88863303836274,  34.97447367613267, 34.67068700407235,  34.322446215925915, 34.412373915572395,  34.82566297044708, 34.43633524187389, 37.4101977692744], 
+     [0.4, 0.3902777777777778, 0.3958333333333333, 0.4013888888888889,  0.4041666666666667,  0.39166666666666666,  0.4027777777777778, 0.3958333333333333],
+     [0.6541666666666667, 0.6527777777777778, 0.6555555555555556, 0.6569444444444444,  0.6555555555555556, 0.6583333333333333, 0.6597222222222222,  0.6516666666666666],
+     [0.8055555555555556, 0.8041666666666667,  0.8041666666666667,  0.8041666666666667, 0.8041666666666667, 0.8027777777777778, 0.7866666666666666, 0.8052139080111],
+     [0.9263888888888889, 0.9277777777777778, 0.9277777777777778, 0.9263888888888889, 0.9263888888888889, 0.9277777777777778, 0.9263888888888889, 0.9225],
+     [0.9888888888888889, 0.9875, 0.9888888888888889, 0.9833333333333333, 0.9847222222222223, 0.9861111111111112, 0.9833333333333333, 0.9858333333333333]
+            ]
+
+def plot_februar(sez_feb_x, sez_nov_x):
+        # Seznam: Absolutna napaka, Prophet, 10%, 20%, 30%, 50%, 100%
+    x = [3, 4, 5, 6, 7, 8, 9, 30]
+    Labels = ["Absolutna napaka", "10% absolutni interval", "20% absolutni interval", "30% absolutni interval", "50% absolutni interval", "100% absolutni interval"]
+    stevec = 1
+    for i in sez_feb_x[1:]:
+        plt.plot(x, i, label = f"{Labels[stevec]}")
+        stevec += 1
+    
+    plt.suptitle(f'Orbit napoved za 50 dni (februar)')
+    plt.ylabel("Kolikokrat zadanemo interval (delež)")
+    plt.xlabel("Število ur podatkov pred zaprtjem")
+    plt.legend(loc="upper right")
+    plt.show()
+
+    stevec = 1
+    for i in sez_nov_x[1:]:
+        plt.plot(x, i, label = f"{Labels[stevec]}")
+        stevec += 1
+    plt.suptitle(f'Orbit napoved za 50 dni (november)')
+    plt.ylabel("Kolikokrat zadanemo interval (delež)")
+    plt.xlabel("Število ur podatkov pred zaprtjem")
+    plt.legend(loc="upper right")
+    plt.show()
+
+
+    plt.plot(x, sez_nov_x[0], label = "Absolutna napaka v novembru")
+    plt.plot(x, sez_feb_x[0], label = "Absolutna napaka v februarju")
+    plt.suptitle(f"Orbit napoved za 50 dni")
+    plt.ylabel("Absolutna napaka")
+    plt.xlabel("Število ur podatkov pred zaprtjem")
+    plt.legend()
+    plt.show()
+
+
+sez_nov_Y = [
+     [27.95483503067043, 34.75485888672886, 36.402097668759986, 37.79444130750017, 38.658625561382934, 40.278884306495186, 41.05733068123821, 41.706025492411],
+     [0.5108333333333334, 0.42333333333333334, 0.4116666666666667, 0.3975, 0.37083333333333335, 0.37583333333333335, 0.36666666666666664, 0.3675],
+     [0.7616666666666667, 0.6808333333333333, 0.6591666666666667, 0.6575, 0.6433333333333333, 0.6266666666666667, 0.6266666666666667, 0.62],
+     [0.8741666666666666, 0.8216666666666667, 0.8125, 0.7941666666666667, 0.79, 0.7816666666666666, 0.7775, 0.7783333333333333],
+     [0.9558333333333333, 0.9316666666666666, 0.9291666666666667, 0.93, 0.9258333333333333, 0.9225, 0.9183333333333333, 0.9158333333333334],
+     [0.9875, 0.9841666666666666, 0.985, 0.9875, 0.9891666666666666, 0.9858333333333333, 0.9891666666666666, 0.9875]
+            ]
+
+def plot_y(sez_nov_Y):
+    x_nov = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
+    Labels = ["Absolutna napaka", "10% absolutni interval", "20% absolutni interval", "30% absolutni interval", "50% absolutni interval", "100% absolutni interval"]
+
+    stevec = 1
+    for i in sez_nov_Y[1:]:
+        plt.plot(x_nov, i, label = f"{Labels[stevec]}")
+        stevec += 1
+
+    plt.suptitle(f'Orbit napoved za 50 dni (november)')
+    plt.ylabel("Kolikokrat zadanemo interval (delež)")
+    plt.xlabel("Število ur napovedi pred zaprtjem")
+    plt.legend(loc="upper right")
+    plt.show()
+
+
+
+if __name__ == "__main__":
+    # Orbit_model_DLT(time_1="2021-11-11 00:00:00", X=30, y=2)
+    # Orbit_model_ETS(sez_ETS = [], time_1="2022-02-27 12:00:00", X=30, y=2)
+    # Orbit_model_LGT(time_1="2021-11-11 00:00:00", X=30, y=2)
+    # Orbit_model(date="2021-11-11 00:00:00", X=30, y=2, sez_DLT = [], sez_ETS = [], sez_LGT = [])
+    # Orbit_prediction_one_day(date="2022-02-10", X=30, y=2) # takes really long
+    # plottt_only_one_model(date="2021-11-11", X=30, y=2)
+    # best_interval_X(date="2022-02-10", number_of_days=50, freq=1, start_time=9, end_time=9)
+    # best_interval_Y(date="2021-11-10", number_of_days=50, freq=8, start_time=0.5, end_time=4, X= 30)
+
+    # plot_februar(sez_feb_x, sez_nov_x)
+    # plot_y(sez_nov_Y)
+
+
+    pass

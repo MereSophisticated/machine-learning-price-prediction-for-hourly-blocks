@@ -1,0 +1,84 @@
+
+ 
+ Začetni datum 2021-11-10, Y = 0.5, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 27.95483503067043 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.5108333333333334  
+ 20 procentni absolutni interval 0.7616666666666667 
+ 30 procentni absolutni interval 0.8741666666666666  
+ 50 procentni interval 0.9558333333333333  
+ 100 procentni interval 0.9875
+ 
+ Začetni datum 2021-11-10, Y = 1.0, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 34.75485888672886 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.42333333333333334  
+ 20 procentni absolutni interval 0.6808333333333333 
+ 30 procentni absolutni interval 0.8216666666666667  
+ 50 procentni interval 0.9316666666666666  
+ 100 procentni interval 0.9841666666666666
+ 
+ Začetni datum 2021-11-10, Y = 1.5, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 36.402097668759986 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.4116666666666667  
+ 20 procentni absolutni interval 0.6591666666666667 
+ 30 procentni absolutni interval 0.8125  
+ 50 procentni interval 0.9291666666666667  
+ 100 procentni interval 0.985
+ 
+ Začetni datum 2021-11-10, Y = 2.0, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 37.79444130750017 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.3975  
+ 20 procentni absolutni interval 0.6575 
+ 30 procentni absolutni interval 0.7941666666666667  
+ 50 procentni interval 0.93  
+ 100 procentni interval 0.9875
+ 
+ Začetni datum 2021-11-10, Y = 2.5, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 38.658625561382934 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.37083333333333335  
+ 20 procentni absolutni interval 0.6433333333333333 
+ 30 procentni absolutni interval 0.79  
+ 50 procentni interval 0.9258333333333333  
+ 100 procentni interval 0.9891666666666666
+ 
+ Začetni datum 2021-11-10, Y = 3.0, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 40.278884306495186 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.37583333333333335  
+ 20 procentni absolutni interval 0.6266666666666667 
+ 30 procentni absolutni interval 0.7816666666666666  
+ 50 procentni interval 0.9225  
+ 100 procentni interval 0.9858333333333333
+ 
+ Začetni datum 2021-11-10, Y = 3.5, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 41.05733068123821 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.36666666666666664  
+ 20 procentni absolutni interval 0.6266666666666667 
+ 30 procentni absolutni interval 0.7775  
+ 50 procentni interval 0.9183333333333333  
+ 100 procentni interval 0.9891666666666666
+ 
+ Začetni datum 2021-11-10, Y = 4.0, in za koliko dni je narejena analiza 50 
+ Kolikšna je povprečna napaka 41.706025492411 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.3675  
+ 20 procentni absolutni interval 0.62 
+ 30 procentni absolutni interval 0.7783333333333333  
+ 50 procentni interval 0.9158333333333334  
+ 100 procentni interval 0.9875
+ 
+ 
+ Seznam: Absolutna napaka, orbit, 10%, 20%, 30%, 50%, 100%
+ Seznam =   [
+     [27.95483503067043, 34.75485888672886, 36.402097668759986, 37.79444130750017, 38.658625561382934, 40.278884306495186, 41.05733068123821, 41.706025492411],
+     [0.5108333333333334, 0.42333333333333334, 0.4116666666666667, 0.3975, 0.37083333333333335, 0.37583333333333335, 0.36666666666666664, 0.3675],
+     [0.7616666666666667, 0.6808333333333333, 0.6591666666666667, 0.6575, 0.6433333333333333, 0.6266666666666667, 0.6266666666666667, 0.62],
+     [0.8741666666666666, 0.8216666666666667, 0.8125, 0.7941666666666667, 0.79, 0.7816666666666666, 0.7775, 0.7783333333333333],
+     [0.9558333333333333, 0.9316666666666666, 0.9291666666666667, 0.93, 0.9258333333333333, 0.9225, 0.9183333333333333, 0.9158333333333334],
+     [0.9875, 0.9841666666666666, 0.985, 0.9875, 0.9891666666666666, 0.9858333333333333, 0.9891666666666666, 0.9875]
+            ]
