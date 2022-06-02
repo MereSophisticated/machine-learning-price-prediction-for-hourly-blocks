@@ -441,8 +441,9 @@ def Arima_prediction_days(date="2021-11-10", number_of_days=5, X=5, y=2):
         hundred_prct += procenti_stevila[4]
 
         sez2.append(sez)
-    
+
     napaka_abs_all = napaka_2 / dolzina
+
 
     in_ten_prct = ten_prct / dolzina
     in_twenty_prct = twenty_prct / dolzina
