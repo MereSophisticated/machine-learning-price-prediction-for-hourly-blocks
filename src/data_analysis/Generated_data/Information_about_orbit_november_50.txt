@@ -1,0 +1,64 @@
+
+ 
+ Začetni datum 2021-11-11, X = 3.0, in za koliko dni je narejena analiza 30 
+ Kolikšna je povprečna napaka 34.88863303836274 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.4  
+ 20 procentni absolutni interval 0.6541666666666667 
+ 30 procentni absolutni interval 0.8055555555555556  
+ 50 procentni interval 0.9263888888888889  
+ 100 procentni interval 0.9888888888888889
+ 
+ Začetni datum 2021-11-11, X = 4.0, in za koliko dni je narejena analiza 30 
+ Kolikšna je povprečna napaka 34.97447367613267 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.3902777777777778  
+ 20 procentni absolutni interval 0.6527777777777778 
+ 30 procentni absolutni interval 0.8041666666666667  
+ 50 procentni interval 0.9277777777777778  
+ 100 procentni interval 0.9875
+ 
+ Začetni datum 2021-11-11, X = 5.0, in za koliko dni je narejena analiza 30 
+ Kolikšna je povprečna napaka 34.67068700407235 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.3958333333333333  
+ 20 procentni absolutni interval 0.6555555555555556 
+ 30 procentni absolutni interval 0.8041666666666667  
+ 50 procentni interval 0.9277777777777778  
+ 100 procentni interval 0.9888888888888889
+ 
+ Začetni datum 2021-11-11, X = 6.0, in za koliko dni je narejena analiza 30 
+ Kolikšna je povprečna napaka 34.322446215925915 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.4013888888888889  
+ 20 procentni absolutni interval 0.6569444444444444 
+ 30 procentni absolutni interval 0.8041666666666667  
+ 50 procentni interval 0.9263888888888889  
+ 100 procentni interval 0.9833333333333333
+ 
+ Začetni datum 2021-11-11, X = 7.0, in za koliko dni je narejena analiza 30 
+ Kolikšna je povprečna napaka 34.412373915572395 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.4041666666666667  
+ 20 procentni absolutni interval 0.6555555555555556 
+ 30 procentni absolutni interval 0.8041666666666667  
+ 50 procentni interval 0.9263888888888889  
+ 100 procentni interval 0.9847222222222223
+ 
+ Začetni datum 2021-11-11, X = 8.0, in za koliko dni je narejena analiza 30 
+ Kolikšna je povprečna napaka 34.82566297044708 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.39166666666666666  
+ 20 procentni absolutni interval 0.6583333333333333 
+ 30 procentni absolutni interval 0.8041666666666667  
+ 50 procentni interval 0.9277777777777778  
+ 100 procentni interval 0.9861111111111112
+ 
+ Začetni datum 2021-11-11, X = 9.0, in za koliko dni je narejena analiza 30 
+ Kolikšna je povprečna napaka 34.43633524187389 
+ Postopoma v intervalih: 
+ 10 procentni absolutni interval 0.4027777777777778  
+ 20 procentni absolutni interval 0.6597222222222222 
+ 30 procentni absolutni interval 0.8027777777777778  
+ 50 procentni interval 0.9263888888888889  
+ 100 procentni interval 0.9833333333333333
